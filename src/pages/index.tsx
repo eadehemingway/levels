@@ -25,12 +25,14 @@ const IndexPage = () => {
       .y(d => findCenterOfGravity(d).y)
       .strength(1)
 
-    const collision = d3.forceCollide(radius * 2).strength(0.8)
+    const collision = d3.forceCollide(radius * 2).strength(0.2)
 
     d3.forceSimulation(data)
       .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
+      .alpha(0.04) // small alpha to have the elements move at a slower pace
+      .alphaDecay(0)
       .on("tick", () => {
         // call the tick function running the simulation
         d3.selectAll(`.circle`)
