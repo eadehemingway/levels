@@ -8,13 +8,13 @@ import "../index.css"
 const IndexPage = () => {
   const [year, setYear] = useState(1990)
 
-  const radius = 10
+  const radius = 6
 
   useEffect(() => {
-    if (year >= 2010) return
+    if (year >= 2017) return
     let id = setTimeout(() => {
-      setYear(year + 20)
-    }, 1000)
+      setYear(year + 1)
+    }, 700)
     return () => clearTimeout(id)
   })
 
@@ -78,9 +78,7 @@ const IndexPage = () => {
         y: 300,
       },
     }
-    // console.log(data)
-    console.log(level)
-    console.log(data.name, centersOfGravity[level])
+
     if (!level) return { x: 0, y: -100 }
     return centersOfGravity[level]
   }
@@ -109,18 +107,7 @@ const IndexPage = () => {
       .attr("stroke", "coral")
       .attr("stroke-width", 2)
       .attr("opacity", 1)
-      .attr("fill", d => {
-        // if (d.name === "Norway") {
-        //   // console.log("norway 1990", d.GDP[1990])
-        //   // console.log("norway 2010", d.GDP[2010])
-        //   return "blue"
-        // }
-        if (d.name === "Vietnam") {
-          // console.log("ZIm 1990", d.GDP[1990])
-          // console.log("ZIM 2010", d.GDP[2010])
-          return "purple"
-        }
-      })
+      .attr("fill", "white")
   }
 
   function drawLabels() {
