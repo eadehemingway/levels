@@ -8,23 +8,24 @@ import "../index.css"
 const IndexPage = () => {
   const [year, setYear] = useState(1990)
 
-  const radius = 4
+  const radius = 10
 
   useEffect(() => {
-    if (year >= 2017) return
+    if (year >= 2010) return
     let id = setTimeout(() => {
-      setYear(year + 1)
-    }, 500)
+      setYear(year + 20)
+    }, 1000)
     return () => clearTimeout(id)
   })
 
   useEffect(() => {
+    createSimulation()
     drawLabels()
+    drawCircles()
   }, [])
 
   useEffect(() => {
     createSimulation()
-    drawCircles()
   }, [year])
 
   function createSimulation() {
@@ -40,22 +41,25 @@ const IndexPage = () => {
 
     const collision = d3.forceCollide(radius * 2).strength(0.2)
 
-    const force = d3
-      .forceSimulation(data, d => d.code)
+    d3.forceSimulation(data, d => d.code)
       .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
       .alpha(0.04) // small alpha to have the elements move at a slower pace
       .alphaDecay(0)
       .on("tick", () => {
+        // console.log("tickin")
         // call the tick function running the simulation
         d3.selectAll(`.circle`)
           .attr("cy", d => d.y)
-          .attr("cx", d => d.x)
+          .attr("cx", d => {
+            return d.x
+          })
       })
   }
   function findCenterOfGravity(data) {
     const level = findLevel(data.GDP[year])
+
     const centersOfGravity = {
       levelOne: {
         x: 200,
@@ -74,6 +78,9 @@ const IndexPage = () => {
         y: 300,
       },
     }
+    // console.log(data)
+    console.log(level)
+    console.log(data.name, centersOfGravity[level])
     if (!level) return { x: 0, y: -100 }
     return centersOfGravity[level]
   }
@@ -102,7 +109,18 @@ const IndexPage = () => {
       .attr("stroke", "coral")
       .attr("stroke-width", 2)
       .attr("opacity", 1)
-      .attr("fill", "white")
+      .attr("fill", d => {
+        // if (d.name === "Norway") {
+        //   // console.log("norway 1990", d.GDP[1990])
+        //   // console.log("norway 2010", d.GDP[2010])
+        //   return "blue"
+        // }
+        if (d.name === "Vietnam") {
+          // console.log("ZIm 1990", d.GDP[1990])
+          // console.log("ZIM 2010", d.GDP[2010])
+          return "purple"
+        }
+      })
   }
 
   function drawLabels() {
