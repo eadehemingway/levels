@@ -77,7 +77,7 @@ const IndexPage = () => {
       .forceSimulation(data, d => d.code)
       .force("x", forceX)
       .force("y", forceY)
-      .alpha(1)
+      // .alpha(1)
       .on("tick", () => {
         d3.selectAll(`.circle`)
           .attr("cy", d => d.y)
@@ -85,7 +85,6 @@ const IndexPage = () => {
             return d.x
           })
       })
-    simulation.alpha(1).restart()
   }
 
   function findCenterOfGravity(data) {
