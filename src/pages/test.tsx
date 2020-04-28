@@ -7,62 +7,44 @@ import "../index.css"
 
 const data = [
   {
-    name: "test",
-    code: "VNM",
+    name: "a",
+    code: "one",
     GDP: {
       "1990": 1452.87747911376,
-      "1991": 1507.19172776076,
-      "1992": 1603.9038221598,
-      "1993": 1699.22215313303,
-      "1994": 1815.27590521021,
-      "1995": 1954.77675441082,
-      "1996": 2104.50511173647,
-      "1997": 2244.3108444328,
-      "1998": 2343.44023905062,
-      "1999": 2426.28247873729,
-      "2000": 2562.10486507948,
-      "2001": 2692.12509731393,
-      "2002": 2833.77096342951,
-      "2003": 3000.31115552546,
-      "2004": 3196.29721493583,
-      "2005": 3405.67919485849,
-      "2006": 3609.68303701039,
-      "2007": 3831.24321744876,
-      "2008": 4009.95932073598,
-      "2009": 34185.01979241841,
       "2010": 34408.16861192198,
-      "2011": 34632.76596523658,
-      "2012": 34821.13723082384,
-      "2013": 35024.43890182073,
-      "2014": 35264.82809971072,
-      "2015": 35554.85805564661,
-      "2016": 35837.62870356959,
-      "2017": 36171.8841923362,
     },
   },
+  // {
+  //   name: "b",
+  //   code: "two",
+  //   GDP: {
+  //     "1990": 1452.87747911376,
+  //     "2010": 34408.16861192198,
+  //   },
+  // },
+  // {
+  //   name: "c",
+  //   code: "three",
+  //   GDP: {
+  //     "1990": 1452.87747911376,
+  //     "2010": 34408.16861192198,
+  //   },
+  // },
+  // {
+  //   name: "d",
+  //   code: "four",
+  //   GDP: {
+  //     "1990": 1452.87747911376,
+  //     "2010": 34408.16861192198,
+  //   },
+  // },
 ]
 const IndexPage = () => {
   const [year, setYear] = useState(1990)
+
   const radius = 10
 
-  useEffect(() => {
-    if (year >= 2010) return
-    let id = setTimeout(() => {
-      setYear(year + 20)
-    }, 1000)
-    return () => clearTimeout(id)
-  })
-
-  useEffect(() => {
-    drawLabels()
-    drawCircles()
-  }, [])
-
-  useEffect(() => {
-    createSimulation()
-  }, [year])
-
-  function createSimulation() {
+  function createSim() {
     const forceX = d3
       .forceX()
       .x(d => findCenterOfGravity(d).x)
@@ -73,19 +55,44 @@ const IndexPage = () => {
       .y(d => findCenterOfGravity(d).y)
       .strength(1)
 
+    const collision = d3.forceCollide(radius * 2).strength(0.2)
+
     const simulation = d3
       .forceSimulation(data, d => d.code)
+      .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
-      // .alpha(1)
-      .on("tick", () => {
-        d3.selectAll(`.circle`)
-          .attr("cy", d => d.y)
-          .attr("cx", d => {
-            return d.x
-          })
-      })
+
+    simulation.on("tick", () => {
+      d3.selectAll(`.circle`)
+        .attr("cy", d => d.y)
+        .attr("cx", d => {
+          return d.x
+        })
+    })
+
+    simulation.alpha(1).restart()
   }
+  function setTimeoutYear() {
+    if (year >= 2010) return
+    let id = setTimeout(() => {
+      setYear(year + 20)
+    }, 1000)
+    return () => clearTimeout(id)
+  }
+
+  useEffect(() => {
+    drawLabels()
+    drawCircles()
+    createSim()
+    setTimeoutYear()
+  }, [])
+
+  useEffect(() => {
+    // console.log(simulation)
+    createSim()
+    // simulation.alpha(1).restart()
+  }, [year])
 
   function findCenterOfGravity(data) {
     const level = findLevel(data.GDP[year])
@@ -144,9 +151,10 @@ const IndexPage = () => {
       .attr("stroke-width", 2)
       .attr("opacity", 1)
       .attr("fill", d => {
-        if (d.name === "test") {
+        if (d.name === "a") {
           return "purple"
         }
+        return "white"
       })
   }
 
