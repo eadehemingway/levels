@@ -13,6 +13,7 @@ export default function Nav({ setActivePage, activePage }) {
     <Container>
       {levels.map((l, i) => {
         const isActive = activePage === l
+
         return (
           <Tab key={i} onClick={() => nav(l)} isActive={isActive}>
             {i + 1}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import * as d3 from "d3"
 import styled from "styled-components"
 import "../index.css"
-import { svgHeight, svgWidth } from "../pages/levelone"
+import { svgWidth, svgHeight } from "./LevelPage"
 
 const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
   if (data.length === 0) return null

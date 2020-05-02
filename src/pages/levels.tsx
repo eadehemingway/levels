@@ -32,26 +32,26 @@ const IndexPage = () => {
     "Oceania",
   ]
 
+  const levelDataVals = levelData.map(d => d.GDP[2017])
   const data2017Vals = data.map(d => d.GDP[2017])
-  console.log("data2017Vals:", d3.max(data2017Vals))
 
   function calculateXScale() {
     return d3
       .scaleLinear()
-      .domain([0, d3.max(data2017Vals)])
+      .domain([0, d3.max(levelDataVals) * 3])
       .range([0, svgWidth])
   }
   function calculateYScale() {
     return d3
       .scaleBand()
-      .domain(d3.range(data2017Vals.length))
+      .domain(d3.range(levelDataVals.length))
       .rangeRound([0, svgHeight])
       .paddingInner(0.6)
   }
 
   return (
     <Container>
-      <Nav setActivePage={setActivePage} />
+      <Nav setActivePage={setActivePage} activePage={activePage} />
       <LevelPage
         calculateXScale={calculateXScale}
         calculateYScale={calculateYScale}
