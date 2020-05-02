@@ -16,51 +16,55 @@ const data = [
   },
 ]
 
-const forceX = d3
-  .forceX()
-  .x(d => {
-    return d.xVal[1]
-  })
-  .strength(1)
-
-const forceY = d3
-  .forceY()
-  .y(d => 300)
-  .strength(1)
-
-const collision = d3.forceCollide(10 * 2).strength(0.2)
-
-const simulation = d3
-  .forceSimulation(data, d => d.code)
-  .force("collision", collision)
-  .force("x", forceX)
-  .force("y", forceY)
-
-simulation.on("tick", () => {
-  d3.selectAll(`.circle`)
-    .attr("cy", d => d.y)
-    .attr("cx", d => {
-      return d.x
-    })
-})
 const IndexPage = () => {
   const [number, setNumber] = useState(1)
   const radius = 10
 
   function createSim() {
+    const forceX = d3
+      .forceX()
+      .x(d => {
+        console.log(d.xVal[number])
+        return d.xVal[number]
+      })
+      .strength(1)
+
+    const forceY = d3
+      .forceY()
+      .y(d => 300)
+      .strength(1)
+
+    const collision = d3.forceCollide(10 * 2).strength(0.2)
+
+    const simulation = d3
+      .forceSimulation(data, d => d.code)
+      .force("collision", collision)
+      .force("x", forceX)
+      .force("y", forceY)
+
+    simulation.on("tick", () => {
+      d3.selectAll(`.circle`)
+        .attr("cy", d => d.y)
+        .attr("cx", d => {
+          return d.x
+        })
+    })
     simulation.alpha(1).restart()
   }
   function setTimeoutYear() {
     if (number >= 2) return
-    let id = setTimeout(() => {
+    setTimeout(() => {
       setNumber(number + 1)
     }, 1000)
-    return () => clearTimeout(id)
+    setTimeout(() => {
+      setNumber(number + 1)
+    }, 1001)
   }
 
   useEffect(() => {
     drawCircles()
     setTimeoutYear()
+    createSim()
   }, [])
 
   useEffect(() => {

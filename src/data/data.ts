@@ -20,6 +20,7 @@ export const data = [
       "2016": 1802.69556548499,
       "2017": 1803.98748708124,
     },
+    continent: "Asia",
   },
   {
     name: "Albania",
@@ -54,6 +55,7 @@ export const data = [
       "2016": 11356.3413288171,
       "2017": 11803.4305936025,
     },
+    continent: "Europe",
   },
   {
     name: "Algeria",
@@ -88,6 +90,7 @@ export const data = [
       "2016": 13921.1800218255,
       "2017": 13913.8393634819,
     },
+    continent: "Africa",
   },
   {
     name: "Angola",
@@ -122,6 +125,7 @@ export const data = [
       "2016": 5972.451512997,
       "2017": 5819.49497145261,
     },
+    continent: "Africa",
   },
   {
     name: "Antigua and Barbuda",
@@ -156,6 +160,7 @@ export const data = [
       "2016": 21013.0176273358,
       "2017": 21490.9426586166,
     },
+    continent: "North America",
   },
   {
     name: "Argentina",
@@ -190,6 +195,7 @@ export const data = [
       "2016": 18584.580004917,
       "2017": 18933.9071474396,
     },
+    continent: "South America",
   },
   {
     name: "Armenia",
@@ -224,8 +230,14 @@ export const data = [
       "2016": 8190.23928885988,
       "2017": 8787.57993972036,
     },
+    continent: "Asia",
   },
-  { name: "Aruba", code: "ABW", GDP: { "2011": 35973.780509792 } },
+  {
+    name: "Aruba",
+    code: "ABW",
+    GDP: { "2011": 35973.780509792 },
+    continent: "North America",
+  },
   {
     name: "Australia",
     code: "AUS",
@@ -259,6 +271,7 @@ export const data = [
       "2016": 44493.4808943831,
       "2017": 44648.7099113362,
     },
+    continent: "Oceania",
   },
   {
     name: "Austria",
@@ -293,6 +306,7 @@ export const data = [
       "2016": 44464.3502683082,
       "2017": 45436.6858219914,
     },
+    continent: "Europe",
   },
   {
     name: "Azerbaijan",
@@ -327,6 +341,7 @@ export const data = [
       "2016": 16001.3233967209,
       "2017": 15847.4188327529,
     },
+    continent: "Asia",
   },
   {
     name: "Bahamas",
@@ -361,6 +376,7 @@ export const data = [
       "2016": 27613.5179396955,
       "2017": 27717.8472975209,
     },
+    continent: "North America",
   },
   {
     name: "Bahrain",
@@ -395,6 +411,7 @@ export const data = [
       "2016": 43642.9725745003,
       "2017": 43290.7045180745,
     },
+    continent: "Asia",
   },
   {
     name: "Bangladesh",
@@ -429,6 +446,7 @@ export const data = [
       "2016": 3319.35280468543,
       "2017": 3523.98385062592,
     },
+    continent: "Asia",
   },
   {
     name: "Barbados",
@@ -463,6 +481,7 @@ export const data = [
       "2016": 16741.3797629383,
       "2017": 16978.0676859393,
     },
+    continent: "North America",
   },
   {
     name: "Belarus",
@@ -497,6 +516,7 @@ export const data = [
       "2016": 16773.1935504926,
       "2017": 17167.9672600246,
     },
+    continent: "Europe",
   },
   {
     name: "Belgium",
@@ -531,6 +551,7 @@ export const data = [
       "2016": 42083.6443038217,
       "2017": 42658.57617009,
     },
+    continent: "Europe",
   },
   {
     name: "Belize",
@@ -565,6 +586,7 @@ export const data = [
       "2016": 7919.14724135852,
       "2017": 7824.36245892342,
     },
+    continent: "North America",
   },
   {
     name: "Benin",
@@ -599,6 +621,7 @@ export const data = [
       "2016": 2009.61832073663,
       "2017": 2064.23633398033,
     },
+    continent: "Africa",
   },
   {
     name: "Bermuda",
@@ -629,6 +652,7 @@ export const data = [
       "2012": 52137.3003731125,
       "2013": 50669.3147696996,
     },
+    continent: "North America",
   },
   {
     name: "Bhutan",
@@ -663,6 +687,7 @@ export const data = [
       "2016": 8253.29378307761,
       "2017": 8708.59712072611,
     },
+    continent: "Asia",
   },
   {
     name: "Bolivia",
@@ -697,6 +722,7 @@ export const data = [
       "2016": 6707.95618414272,
       "2017": 6885.82857742035,
     },
+    continent: "South America",
   },
   {
     name: "Bosnia and Herzegovina",
@@ -727,6 +753,7 @@ export const data = [
       "2016": 11337.5702648861,
       "2017": 11713.8947839235,
     },
+    continent: "Europe",
   },
   {
     name: "Botswana",
@@ -761,6 +788,7 @@ export const data = [
       "2016": 15727.167803336,
       "2017": 15807.3735945626,
     },
+    continent: "Africa",
   },
   {
     name: "Brazil",
@@ -795,6 +823,7 @@ export const data = [
       "2016": 14077.1214085544,
       "2017": 14103.4515313404,
     },
+    continent: "South America",
   },
   {
     name: "Brunei",
@@ -829,6 +858,7 @@ export const data = [
       "2016": 71788.7833914688,
       "2017": 71809.250580867,
     },
+    continent: "Asia",
   },
   {
     name: "Bulgaria",
@@ -863,6 +893,7 @@ export const data = [
       "2016": 17794.5427573699,
       "2017": 18563.3066168958,
     },
+    continent: "Europe",
   },
   {
     name: "Burkina Faso",
@@ -897,6 +928,7 @@ export const data = [
       "2016": 1642.32200318544,
       "2017": 1703.10162867752,
     },
+    continent: "Africa",
   },
   {
     name: "Burundi",
@@ -931,6 +963,7 @@ export const data = [
       "2016": 721.176561528182,
       "2017": 702.2253130438,
     },
+    continent: "Africa",
   },
   {
     name: "Cambodia",
@@ -962,6 +995,7 @@ export const data = [
       "2016": 3465.12556490306,
       "2017": 3645.06952060093,
     },
+    continent: "Asia",
   },
   {
     name: "Cameroon",
@@ -996,6 +1030,7 @@ export const data = [
       "2016": 3346.81779272084,
       "2017": 3364.92605635113,
     },
+    continent: "Africa",
   },
   {
     name: "Canada",
@@ -1030,6 +1065,7 @@ export const data = [
       "2016": 43238.2596047198,
       "2017": 44017.5909063335,
     },
+    continent: "North America",
   },
   {
     name: "Cape Verde",
@@ -1064,8 +1100,14 @@ export const data = [
       "2016": 6065.27874039611,
       "2017": 6222.55416600772,
     },
+    continent: "Africa",
   },
-  { name: "Cayman Islands", code: "CYM", GDP: { "2011": 49903.0285395752 } },
+  {
+    name: "Cayman Islands",
+    code: "CYM",
+    GDP: { "2011": 49903.0285395752 },
+    continent: "North America",
+  },
   {
     name: "Central African Republic",
     code: "CAF",
@@ -1099,6 +1141,7 @@ export const data = [
       "2016": 642.873494030895,
       "2017": 661.239967689311,
     },
+    continent: "Africa",
   },
   {
     name: "Chad",
@@ -1133,6 +1176,7 @@ export const data = [
       "2016": 1878.37848258326,
       "2017": 1768.15341090621,
     },
+    continent: "Africa",
   },
   {
     name: "Chile",
@@ -1167,6 +1211,7 @@ export const data = [
       "2016": 22614.3936667162,
       "2017": 22767.0371912423,
     },
+    continent: "South America",
   },
   {
     name: "China",
@@ -1201,6 +1246,7 @@ export const data = [
       "2016": 14400.8850630561,
       "2017": 15308.712122905,
     },
+    continent: "Asia",
   },
   {
     name: "Colombia",
@@ -1235,6 +1281,7 @@ export const data = [
       "2016": 13135.0098987578,
       "2017": 13254.9492184779,
     },
+    continent: "South America",
   },
   {
     name: "Comoros",
@@ -1269,6 +1316,7 @@ export const data = [
       "2016": 1411.15233885964,
       "2017": 1413.890036328,
     },
+    continent: "Africa",
   },
   {
     name: "Congo",
@@ -1303,6 +1351,7 @@ export const data = [
       "2016": 5250.86760824979,
       "2017": 4881.40574395234,
     },
+    continent: "Africa",
   },
   {
     name: "Costa Rica",
@@ -1337,6 +1386,7 @@ export const data = [
       "2016": 15195.001412292,
       "2017": 15524.9945630542,
     },
+    continent: "North America",
   },
   {
     name: "Cote d'Ivoire",
@@ -1371,6 +1421,7 @@ export const data = [
       "2016": 3424.96402094039,
       "2017": 3601.00590113374,
     },
+    continent: "Africa",
   },
   {
     name: "Croatia",
@@ -1400,6 +1451,7 @@ export const data = [
       "2016": 21799.9328108641,
       "2017": 22669.796546633,
     },
+    continent: "Europe",
   },
   {
     name: "Cyprus",
@@ -1434,6 +1486,7 @@ export const data = [
       "2016": 31331.3930028654,
       "2017": 32415.1322300794,
     },
+    continent: "Asia",
   },
   {
     name: "Czech Republic",
@@ -1468,6 +1521,7 @@ export const data = [
       "2016": 31338.8752118175,
       "2017": 32605.9063265661,
     },
+    continent: "Europe",
   },
   {
     name: "Democratic Republic of Congo",
@@ -1502,6 +1556,7 @@ export const data = [
       "2016": 805.064264107408,
       "2017": 808.133213366763,
     },
+    continent: "Africa",
   },
   {
     name: "Denmark",
@@ -1536,8 +1591,14 @@ export const data = [
       "2016": 45991.2247756847,
       "2017": 46682.5147204669,
     },
+    continent: "Europe",
   },
-  { name: "Djibouti", code: "DJI", GDP: { "2011": 2705.40558882684 } },
+  {
+    name: "Djibouti",
+    code: "DJI",
+    GDP: { "2011": 2705.40558882684 },
+    continent: "Africa",
+  },
   {
     name: "Dominica",
     code: "DMA",
@@ -1571,6 +1632,7 @@ export const data = [
       "2016": 10151.3425573111,
       "2017": 9673.36696180547,
     },
+    continent: "North America",
   },
   {
     name: "Dominican Republic",
@@ -1605,6 +1667,7 @@ export const data = [
       "2016": 14120.2116371665,
       "2017": 14600.8605841474,
     },
+    continent: "North America",
   },
   {
     name: "Ecuador",
@@ -1639,6 +1702,7 @@ export const data = [
       "2016": 10424.2641539122,
       "2017": 10581.9364286536,
     },
+    continent: "South America",
   },
   {
     name: "Egypt",
@@ -1673,6 +1737,7 @@ export const data = [
       "2016": 10324.1011436186,
       "2017": 10550.2064956646,
     },
+    continent: "Africa",
   },
   {
     name: "El Salvador",
@@ -1707,6 +1772,7 @@ export const data = [
       "2016": 7164.14349682179,
       "2017": 7292.45780376927,
     },
+    continent: "North America",
   },
   {
     name: "Equatorial Guinea",
@@ -1741,6 +1807,7 @@ export const data = [
       "2016": 24240.4282992522,
       "2017": 22604.8732922993,
     },
+    continent: "Africa",
   },
   {
     name: "Eritrea",
@@ -1767,6 +1834,7 @@ export const data = [
       "2010": 1416.36580154238,
       "2011": 1510.45892910899,
     },
+    continent: "Africa",
   },
   {
     name: "Estonia",
@@ -1796,6 +1864,7 @@ export const data = [
       "2016": 28109.81704489,
       "2017": 29481.2518067978,
     },
+    continent: "Europe",
   },
   {
     name: "Ethiopia",
@@ -1830,6 +1899,7 @@ export const data = [
       "2016": 1608.29347611692,
       "2017": 1729.9266389468,
     },
+    continent: "Africa",
   },
   {
     name: "Fiji",
@@ -1864,6 +1934,7 @@ export const data = [
       "2016": 8447.26417897152,
       "2017": 8702.97532202106,
     },
+    continent: "Oceania",
   },
   {
     name: "Finland",
@@ -1898,6 +1969,7 @@ export const data = [
       "2016": 39659.1660392991,
       "2017": 40585.7210349228,
     },
+    continent: "Europe",
   },
   {
     name: "France",
@@ -1932,6 +2004,7 @@ export const data = [
       "2016": 38062.6397284874,
       "2017": 38605.6708967878,
     },
+    continent: "Europe",
   },
   {
     name: "Gabon",
@@ -1966,6 +2039,7 @@ export const data = [
       "2016": 16756.6944675998,
       "2017": 16562.4133558094,
     },
+    continent: "Africa",
   },
   {
     name: "Gambia",
@@ -2000,6 +2074,7 @@ export const data = [
       "2016": 1554.89713835209,
       "2017": 1561.76684287663,
     },
+    continent: "Africa",
   },
   {
     name: "Georgia",
@@ -2034,6 +2109,7 @@ export const data = [
       "2016": 9276.76624499826,
       "2017": 9745.07890399104,
     },
+    continent: "Asia",
   },
   {
     name: "Germany",
@@ -2068,6 +2144,7 @@ export const data = [
       "2016": 44431.8228379944,
       "2017": 45229.2452947032,
     },
+    continent: "Europe",
   },
   {
     name: "Ghana",
@@ -2102,6 +2179,7 @@ export const data = [
       "2016": 3982.76946707348,
       "2017": 4227.62984443235,
     },
+    continent: "Africa",
   },
   {
     name: "Greece",
@@ -2136,6 +2214,7 @@ export const data = [
       "2016": 24211.7408896851,
       "2017": 24574.382476123,
     },
+    continent: "Europe",
   },
   {
     name: "Grenada",
@@ -2170,6 +2249,7 @@ export const data = [
       "2016": 13167.0521552704,
       "2017": 13593.8769176008,
     },
+    continent: "North America",
   },
   {
     name: "Guatemala",
@@ -2204,6 +2284,7 @@ export const data = [
       "2016": 7368.61032177815,
       "2017": 7423.80759192956,
     },
+    continent: "North America",
   },
   {
     name: "Guinea",
@@ -2238,6 +2319,7 @@ export const data = [
       "2016": 1894.44129905562,
       "2017": 1998.92571988235,
     },
+    continent: "Africa",
   },
   {
     name: "Guinea-Bissau",
@@ -2272,6 +2354,7 @@ export const data = [
       "2016": 1498.83983814272,
       "2017": 1548.67470304471,
     },
+    continent: "Africa",
   },
   {
     name: "Guyana",
@@ -2306,6 +2389,7 @@ export const data = [
       "2016": 7266.3352852239,
       "2017": 7435.0470900237,
     },
+    continent: "South America",
   },
   {
     name: "Haiti",
@@ -2334,6 +2418,7 @@ export const data = [
       "2016": 1654.17053675815,
       "2017": 1653.17250369424,
     },
+    continent: "North America",
   },
   {
     name: "Honduras",
@@ -2368,6 +2453,7 @@ export const data = [
       "2016": 4406.77353237576,
       "2017": 4541.79525706075,
     },
+    continent: "North America",
   },
   {
     name: "Hong Kong",
@@ -2402,6 +2488,7 @@ export const data = [
       "2016": 54412.9249387607,
       "2017": 56054.9198320303,
     },
+    continent: "Asia",
   },
   {
     name: "Hungary",
@@ -2435,6 +2522,7 @@ export const data = [
       "2016": 25664.136004531,
       "2017": 26777.5607913953,
     },
+    continent: "Europe",
   },
   {
     name: "Iceland",
@@ -2463,6 +2551,7 @@ export const data = [
       "2016": 45630.9381699818,
       "2017": 46482.9582874747,
     },
+    continent: "Europe",
   },
   {
     name: "India",
@@ -2497,6 +2586,7 @@ export const data = [
       "2016": 6095.72279590336,
       "2017": 6426.67440634599,
     },
+    continent: "Asia",
   },
   {
     name: "Indonesia",
@@ -2531,6 +2621,7 @@ export const data = [
       "2016": 10766.3714478177,
       "2017": 11188.7440161175,
     },
+    continent: "Asia",
   },
   {
     name: "Iran",
@@ -2565,6 +2656,7 @@ export const data = [
       "2016": 18497.6743334441,
       "2017": 19082.619603326,
     },
+    continent: "Asia",
   },
   {
     name: "Iraq",
@@ -2599,6 +2691,7 @@ export const data = [
       "2016": 16242.0690194963,
       "2017": 15663.9860708075,
     },
+    continent: "Asia",
   },
   {
     name: "Ireland",
@@ -2633,6 +2726,7 @@ export const data = [
       "2016": 63227.2079765883,
       "2017": 67335.2934089652,
     },
+    continent: "Europe",
   },
   {
     name: "Israel",
@@ -2667,6 +2761,7 @@ export const data = [
       "2016": 32688.4081041526,
       "2017": 33132.3203044888,
     },
+    continent: "Asia",
   },
   {
     name: "Italy",
@@ -2701,6 +2796,7 @@ export const data = [
       "2016": 34655.2627627333,
       "2017": 35220.0837894122,
     },
+    continent: "Europe",
   },
   {
     name: "Jamaica",
@@ -2735,6 +2831,7 @@ export const data = [
       "2016": 8179.62033999721,
       "2017": 8193.57064989072,
     },
+    continent: "North America",
   },
   {
     name: "Japan",
@@ -2769,6 +2866,7 @@ export const data = [
       "2016": 38282.5046733349,
       "2017": 39002.2233247384,
     },
+    continent: "Asia",
   },
   {
     name: "Jordan",
@@ -2803,6 +2901,7 @@ export const data = [
       "2016": 8389.60457395155,
       "2017": 8337.489701029,
     },
+    continent: "Asia",
   },
   {
     name: "Kazakhstan",
@@ -2837,6 +2936,7 @@ export const data = [
       "2016": 23447.015704281,
       "2017": 24055.5883238545,
     },
+    continent: "Asia",
   },
   {
     name: "Kenya",
@@ -2871,6 +2971,7 @@ export const data = [
       "2016": 2926.53250207873,
       "2017": 2993.02844847527,
     },
+    continent: "Africa",
   },
   {
     name: "Kiribati",
@@ -2905,6 +3006,7 @@ export const data = [
       "2016": 1955.15579891088,
       "2017": 1981.13186864146,
     },
+    continent: "Oceania",
   },
   {
     name: "Kosovo",
@@ -2929,6 +3031,7 @@ export const data = [
       "2016": 9451.90893950694,
       "2017": 9795.83361233436,
     },
+    continent: "Europe",
   },
   {
     name: "Kuwait",
@@ -2958,6 +3061,7 @@ export const data = [
       "2016": 68861.7920978832,
       "2017": 65530.5365781216,
     },
+    continent: "Asia",
   },
   {
     name: "Kyrgyzstan",
@@ -2992,6 +3096,7 @@ export const data = [
       "2016": 3309.85992947551,
       "2017": 3393.47361284144,
     },
+    continent: "Asia",
   },
   {
     name: "Laos",
@@ -3026,6 +3131,7 @@ export const data = [
       "2016": 6073.22369456346,
       "2017": 6397.35982538814,
     },
+    continent: "Asia",
   },
   {
     name: "Latvia",
@@ -3055,6 +3161,7 @@ export const data = [
       "2016": 23743.2578198778,
       "2017": 25063.8455453213,
     },
+    continent: "Europe",
   },
   {
     name: "Lebanon",
@@ -3089,6 +3196,7 @@ export const data = [
       "2016": 13267.8856986827,
       "2017": 13367.5650219298,
     },
+    continent: "Asia",
   },
   {
     name: "Lesotho",
@@ -3123,6 +3231,7 @@ export const data = [
       "2016": 2736.3548946839,
       "2017": 2851.15275428862,
     },
+    continent: "Africa",
   },
   {
     name: "Liberia",
@@ -3157,6 +3266,7 @@ export const data = [
       "2016": 753.557379048622,
       "2017": 752.787839463112,
     },
+    continent: "Africa",
   },
   {
     name: "Libya",
@@ -3182,6 +3292,7 @@ export const data = [
       "2016": 14298.4550473411,
       "2017": 17881.5093512674,
     },
+    continent: "Africa",
   },
   {
     name: "Lithuania",
@@ -3211,6 +3322,7 @@ export const data = [
       "2016": 28033.8739289417,
       "2017": 29524.2646006684,
     },
+    continent: "Europe",
   },
   {
     name: "Luxembourg",
@@ -3245,6 +3357,7 @@ export const data = [
       "2016": 94920.9587222948,
       "2017": 94277.9653571589,
     },
+    continent: "Europe",
   },
   {
     name: "Macao",
@@ -3279,6 +3392,7 @@ export const data = [
       "2016": 97751.7321632423,
       "2017": 104861.851096529,
     },
+    continent: "Asia",
   },
   {
     name: "Macedonia",
@@ -3313,6 +3427,7 @@ export const data = [
       "2016": 13120.8725132858,
       "2017": 13111.2135744255,
     },
+    continent: "Europe",
   },
   {
     name: "Madagascar",
@@ -3347,6 +3462,7 @@ export const data = [
       "2016": 1396.6696154848,
       "2017": 1416.43950728464,
     },
+    continent: "Africa",
   },
   {
     name: "Malawi",
@@ -3381,6 +3497,7 @@ export const data = [
       "2016": 1083.80142082959,
       "2017": 1095.04208875801,
     },
+    continent: "Africa",
   },
   {
     name: "Malaysia",
@@ -3415,6 +3532,7 @@ export const data = [
       "2016": 25668.884358229,
       "2017": 26808.1640645679,
     },
+    continent: "Asia",
   },
   {
     name: "Maldives",
@@ -3444,6 +3562,7 @@ export const data = [
       "2016": 14231.5341514479,
       "2017": 15183.6163982888,
     },
+    continent: "Asia",
   },
   {
     name: "Mali",
@@ -3478,6 +3597,7 @@ export const data = [
       "2016": 1971.08447950848,
       "2017": 2014.30586969334,
     },
+    continent: "Africa",
   },
   {
     name: "Malta",
@@ -3512,6 +3632,7 @@ export const data = [
       "2016": 35058.4307800792,
       "2017": 36513.323442225,
     },
+    continent: "Europe",
   },
   {
     name: "Marshall Islands",
@@ -3546,6 +3667,7 @@ export const data = [
       "2016": 3730.33398854254,
       "2017": 3819.20211986181,
     },
+    continent: "Oceania",
   },
   {
     name: "Mauritania",
@@ -3580,6 +3702,7 @@ export const data = [
       "2016": 3572.28039224539,
       "2017": 3597.63253011137,
     },
+    continent: "Africa",
   },
   {
     name: "Mauritius",
@@ -3614,6 +3737,7 @@ export const data = [
       "2016": 19567.4896610354,
       "2017": 20292.7446336139,
     },
+    continent: "Africa",
   },
   {
     name: "Mexico",
@@ -3648,6 +3772,7 @@ export const data = [
       "2016": 17206.6343224392,
       "2017": 17336.469071694,
     },
+    continent: "North America",
   },
   {
     name: "Micronesia (country)",
@@ -3682,6 +3807,7 @@ export const data = [
       "2016": 3253.47975532675,
       "2017": 3299.46385570395,
     },
+    continent: "Oceania",
   },
   {
     name: "Moldova",
@@ -3711,6 +3837,7 @@ export const data = [
       "2016": 4963.39834391968,
       "2017": 5189.97166016505,
     },
+    continent: "Europe",
   },
   {
     name: "Mongolia",
@@ -3745,6 +3872,7 @@ export const data = [
       "2016": 11361.0064180842,
       "2017": 11840.8461179669,
     },
+    continent: "Asia",
   },
   {
     name: "Montenegro",
@@ -3772,6 +3900,7 @@ export const data = [
       "2016": 15737.0249188206,
       "2017": 16409.2876960117,
     },
+    continent: "Europe",
   },
   {
     name: "Morocco",
@@ -3806,6 +3935,7 @@ export const data = [
       "2016": 7285.90832106945,
       "2017": 7485.01295069865,
     },
+    continent: "Africa",
   },
   {
     name: "Mozambique",
@@ -3840,6 +3970,7 @@ export const data = [
       "2016": 1127.34726420517,
       "2017": 1136.10256446235,
     },
+    continent: "Africa",
   },
   {
     name: "Myanmar",
@@ -3874,6 +4005,7 @@ export const data = [
       "2016": 5305.04713749719,
       "2017": 5591.5968799618,
     },
+    continent: "Asia",
   },
   {
     name: "Namibia",
@@ -3908,6 +4040,7 @@ export const data = [
       "2016": 9825.59926991324,
       "2017": 9541.80829205217,
     },
+    continent: "Africa",
   },
   {
     name: "Nauru",
@@ -3925,6 +4058,7 @@ export const data = [
       "2016": 12950.5289813432,
       "2017": 12895.6345072345,
     },
+    continent: "Oceania",
   },
   {
     name: "Nepal",
@@ -3959,6 +4093,7 @@ export const data = [
       "2016": 2297.65253885535,
       "2017": 2442.80394231834,
     },
+    continent: "Asia",
   },
   {
     name: "Netherlands",
@@ -3993,6 +4128,7 @@ export const data = [
       "2016": 47269.6329521216,
       "2017": 48472.5445411531,
     },
+    continent: "Europe",
   },
   {
     name: "New Zealand",
@@ -4027,6 +4163,7 @@ export const data = [
       "2016": 35776.5717269995,
       "2017": 36085.8427771972,
     },
+    continent: "Oceania",
   },
   {
     name: "Nicaragua",
@@ -4061,6 +4198,7 @@ export const data = [
       "2016": 5130.58029479392,
       "2017": 5321.44351591724,
     },
+    continent: "North America",
   },
   {
     name: "Niger",
@@ -4095,6 +4233,7 @@ export const data = [
       "2016": 917.140115923232,
       "2017": 926.000141959658,
     },
+    continent: "Africa",
   },
   {
     name: "Nigeria",
@@ -4129,6 +4268,7 @@ export const data = [
       "2016": 5434.73479515868,
       "2017": 5338.45412665139,
     },
+    continent: "Africa",
   },
   {
     name: "Norway",
@@ -4163,6 +4303,7 @@ export const data = [
       "2016": 64159.544250136,
       "2017": 64800.0573263061,
     },
+    continent: "Europe",
   },
   {
     name: "Oman",
@@ -4197,6 +4338,7 @@ export const data = [
       "2016": 39883.9536508277,
       "2017": 37960.7091885335,
     },
+    continent: "Asia",
   },
   {
     name: "Pakistan",
@@ -4231,6 +4373,7 @@ export const data = [
       "2016": 4857.16871756739,
       "2017": 5034.70775633353,
     },
+    continent: "Asia",
   },
   {
     name: "Palau",
@@ -4255,6 +4398,7 @@ export const data = [
       "2016": 13896.5829646234,
       "2017": 13240.4048103124,
     },
+    continent: "Oceania",
   },
   {
     name: "Palestine",
@@ -4285,6 +4429,7 @@ export const data = [
       "2016": 4738.01542623788,
       "2017": 4449.89832452996,
     },
+    continent: "Asia",
   },
   {
     name: "Panama",
@@ -4319,6 +4464,7 @@ export const data = [
       "2016": 21472.6901894809,
       "2017": 22267.0368216362,
     },
+    continent: "North America",
   },
   {
     name: "Papua New Guinea",
@@ -4353,6 +4499,7 @@ export const data = [
       "2016": 3817.7808091091,
       "2017": 3823.19379963882,
     },
+    continent: "Oceania",
   },
   {
     name: "Paraguay",
@@ -4387,6 +4534,7 @@ export const data = [
       "2016": 8871.37954006657,
       "2017": 8827.01005811482,
     },
+    continent: "South America",
   },
   {
     name: "Peru",
@@ -4421,6 +4569,7 @@ export const data = [
       "2016": 12082.1680106024,
       "2017": 12236.7061519677,
     },
+    continent: "South America",
   },
   {
     name: "Philippines",
@@ -4455,6 +4604,7 @@ export const data = [
       "2016": 7233.20610317139,
       "2017": 7599.18806040387,
     },
+    continent: "Asia",
   },
   {
     name: "Poland",
@@ -4489,6 +4639,7 @@ export const data = [
       "2016": 26035.8379036022,
       "2017": 27216.4448774425,
     },
+    continent: "Europe",
   },
   {
     name: "Portugal",
@@ -4523,6 +4674,7 @@ export const data = [
       "2016": 27124.155038865,
       "2017": 27936.8960928735,
     },
+    continent: "Europe",
   },
   {
     name: "Puerto Rico",
@@ -4556,6 +4708,7 @@ export const data = [
       "2015": 35291.8442055799,
       "2016": 35044.6697057835,
     },
+    continent: "North America",
   },
   {
     name: "Qatar",
@@ -4580,6 +4733,7 @@ export const data = [
       "2016": 118207.134622686,
       "2017": 116935.600359799,
     },
+    continent: "Asia",
   },
   {
     name: "Romania",
@@ -4614,6 +4768,7 @@ export const data = [
       "2016": 21670.7047886072,
       "2017": 23313.1993431851,
     },
+    continent: "Europe",
   },
   {
     name: "Russia",
@@ -4648,6 +4803,7 @@ export const data = [
       "2016": 24416.6238784033,
       "2017": 24765.9536336261,
     },
+    continent: "Asia",
   },
   {
     name: "Rwanda",
@@ -4682,6 +4838,7 @@ export const data = [
       "2016": 1790.25475455162,
       "2017": 1854.21079087361,
     },
+    continent: "Africa",
   },
   {
     name: "Saint Kitts and Nevis",
@@ -4716,6 +4873,7 @@ export const data = [
       "2016": 24463.6172536033,
       "2017": 24654.3854011216,
     },
+    continent: "North America",
   },
   {
     name: "Saint Lucia",
@@ -4750,6 +4908,7 @@ export const data = [
       "2016": 12671.2580549212,
       "2017": 12951.8388772691,
     },
+    continent: "North America",
   },
   {
     name: "Saint Vincent and the Grenadines",
@@ -4784,6 +4943,7 @@ export const data = [
       "2016": 10583.0539712116,
       "2017": 10727.146072995,
     },
+    continent: "North America",
   },
   {
     name: "Samoa",
@@ -4818,6 +4978,7 @@ export const data = [
       "2016": 5914.28129085367,
       "2017": 6021.55742363963,
     },
+    continent: "Oceania",
   },
   {
     name: "San Marino",
@@ -4845,6 +5006,7 @@ export const data = [
       "2016": 56500.4691070515,
       "2017": 56861.4697322851,
     },
+    continent: "Europe",
   },
   {
     name: "Sao Tome and Principe",
@@ -4868,6 +5030,7 @@ export const data = [
       "2016": 3003.76844608335,
       "2017": 3052.71374319686,
     },
+    continent: "Africa",
   },
   {
     name: "Saudi Arabia",
@@ -4902,6 +5065,7 @@ export const data = [
       "2016": 50423.0134931014,
       "2017": 49045.4112618159,
     },
+    continent: "Asia",
   },
   {
     name: "Senegal",
@@ -4936,6 +5100,7 @@ export const data = [
       "2016": 2379.45126362328,
       "2017": 2470.57958207519,
     },
+    continent: "Africa",
   },
   {
     name: "Serbia",
@@ -4965,6 +5130,7 @@ export const data = [
       "2016": 13720.8908914885,
       "2017": 14048.8806366748,
     },
+    continent: "Europe",
   },
   {
     name: "Seychelles",
@@ -4999,6 +5165,7 @@ export const data = [
       "2016": 25630.7100889485,
       "2017": 26382.2873463186,
     },
+    continent: "Africa",
   },
   {
     name: "Sierra Leone",
@@ -5033,6 +5200,7 @@ export const data = [
       "2016": 1363.86357140879,
       "2017": 1390.30026748482,
     },
+    continent: "Africa",
   },
   {
     name: "Singapore",
@@ -5067,11 +5235,13 @@ export const data = [
       "2016": 82621.5031826688,
       "2017": 85535.3832002,
     },
+    continent: "Asia",
   },
   {
     name: "Sint Maarten (Dutch part)",
     code: "SXM",
     GDP: { "2011": 36327.2318988918 },
+    continent: "North America",
   },
   {
     name: "Slovakia",
@@ -5104,6 +5274,7 @@ export const data = [
       "2016": 29212.3781979582,
       "2017": 30155.1521229863,
     },
+    continent: "Europe",
   },
   {
     name: "Slovenia",
@@ -5133,6 +5304,7 @@ export const data = [
       "2016": 29930.037038675,
       "2017": 31400.8395120955,
     },
+    continent: "Europe",
   },
   {
     name: "Solomon Islands",
@@ -5167,6 +5339,7 @@ export const data = [
       "2016": 2179.2321173534,
       "2017": 2205.92320480796,
     },
+    continent: "Oceania",
   },
   {
     name: "South Africa",
@@ -5201,6 +5374,7 @@ export const data = [
       "2016": 12286.6971248333,
       "2017": 12294.8761402351,
     },
+    continent: "Africa",
   },
   {
     name: "South Korea",
@@ -5235,6 +5409,7 @@ export const data = [
       "2016": 35020.4115062331,
       "2017": 35938.3742161469,
     },
+    continent: "Asia",
   },
   {
     name: "South Sudan",
@@ -5247,6 +5422,7 @@ export const data = [
       "2015": 1875.38006599798,
       "2016": 1569.88834552626,
     },
+    continent: "Africa",
   },
   {
     name: "Spain",
@@ -5281,6 +5457,7 @@ export const data = [
       "2016": 33320.3727243715,
       "2017": 34272.3603838191,
     },
+    continent: "Europe",
   },
   {
     name: "Sri Lanka",
@@ -5315,6 +5492,7 @@ export const data = [
       "2016": 11445.4643648867,
       "2017": 11669.0766785045,
     },
+    continent: "Asia",
   },
   {
     name: "Sudan",
@@ -5349,6 +5527,7 @@ export const data = [
       "2016": 4386.35257682309,
       "2017": 4466.50675475659,
     },
+    continent: "Africa",
   },
   {
     name: "Suriname",
@@ -5383,6 +5562,7 @@ export const data = [
       "2016": 13877.9860066891,
       "2017": 13767.1185111168,
     },
+    continent: "South America",
   },
   {
     name: "Swaziland",
@@ -5417,6 +5597,7 @@ export const data = [
       "2016": 7723.6410594802,
       "2017": 7738.97456607734,
     },
+    continent: "Africa",
   },
   {
     name: "Sweden",
@@ -5451,6 +5632,7 @@ export const data = [
       "2016": 46568.1771455909,
       "2017": 46949.2830858792,
     },
+    continent: "Europe",
   },
   {
     name: "Switzerland",
@@ -5485,6 +5667,7 @@ export const data = [
       "2016": 57421.5485009872,
       "2017": 57410.1658575199,
     },
+    continent: "Europe",
   },
   {
     name: "Tajikistan",
@@ -5519,6 +5702,7 @@ export const data = [
       "2016": 2762.58545284209,
       "2017": 2896.91285075403,
     },
+    continent: "Asia",
   },
   {
     name: "Tanzania",
@@ -5553,6 +5737,7 @@ export const data = [
       "2016": 2583.58967271423,
       "2017": 2683.3040235534,
     },
+    continent: "Africa",
   },
   {
     name: "Thailand",
@@ -5587,6 +5772,7 @@ export const data = [
       "2016": 15705.8065994744,
       "2017": 16277.6711509397,
     },
+    continent: "Asia",
   },
   {
     name: "Timor",
@@ -5611,6 +5797,7 @@ export const data = [
       "2016": 7297.00179604536,
       "2017": 6570.10161939798,
     },
+    continent: "Asia",
   },
   {
     name: "Togo",
@@ -5645,6 +5832,7 @@ export const data = [
       "2016": 1388.49614248697,
       "2017": 1429.81342674593,
     },
+    continent: "Africa",
   },
   {
     name: "Tonga",
@@ -5679,6 +5867,7 @@ export const data = [
       "2016": 5327.26719960567,
       "2017": 5425.62062501365,
     },
+    continent: "Oceania",
   },
   {
     name: "Trinidad and Tobago",
@@ -5713,6 +5902,7 @@ export const data = [
       "2016": 29540.8742983584,
       "2017": 28763.0707623686,
     },
+    continent: "North America",
   },
   {
     name: "Tunisia",
@@ -5747,6 +5937,7 @@ export const data = [
       "2016": 10761.5145274606,
       "2017": 10849.2973861625,
     },
+    continent: "Africa",
   },
   {
     name: "Turkey",
@@ -5781,6 +5972,7 @@ export const data = [
       "2016": 23756.4842864984,
       "2017": 25129.3406487777,
     },
+    continent: "Asia",
   },
   {
     name: "Turkmenistan",
@@ -5815,6 +6007,7 @@ export const data = [
       "2016": 15648.3731140805,
       "2017": 16389.0233128331,
     },
+    continent: "Asia",
   },
   {
     name: "Tuvalu",
@@ -5849,6 +6042,7 @@ export const data = [
       "2016": 3492.497412426,
       "2017": 3575.10382120986,
     },
+    continent: "Oceania",
   },
   {
     name: "Uganda",
@@ -5883,6 +6077,7 @@ export const data = [
       "2016": 1687.08273624095,
       "2017": 1697.70651058028,
     },
+    continent: "Africa",
   },
   {
     name: "Ukraine",
@@ -5917,6 +6112,7 @@ export const data = [
       "2016": 7668.0557761534,
       "2017": 7894.39292578581,
     },
+    continent: "Europe",
   },
   {
     name: "United Arab Emirates",
@@ -5951,6 +6147,7 @@ export const data = [
       "2016": 67705.9493287962,
       "2017": 67293.4827590288,
     },
+    continent: "Asia",
   },
   {
     name: "United Kingdom",
@@ -5985,6 +6182,7 @@ export const data = [
       "2016": 39309.3270821404,
       "2017": 39753.2438934915,
     },
+    continent: "Europe",
   },
   {
     name: "United States",
@@ -6019,6 +6217,7 @@ export const data = [
       "2016": 53399.3591673623,
       "2017": 54225.4461231621,
     },
+    continent: "North America",
   },
   {
     name: "Uruguay",
@@ -6053,6 +6252,7 @@ export const data = [
       "2016": 20093.6322583515,
       "2017": 20551.4094200387,
     },
+    continent: "South America",
   },
   {
     name: "Uzbekistan",
@@ -6087,6 +6287,7 @@ export const data = [
       "2016": 6038.92829875491,
       "2017": 6253.10386034453,
     },
+    continent: "Asia",
   },
   {
     name: "Vanuatu",
@@ -6121,6 +6322,7 @@ export const data = [
       "2016": 2856.47531029292,
       "2017": 2921.90867553046,
     },
+    continent: "Oceania",
   },
   {
     name: "Venezuela",
@@ -6152,6 +6354,7 @@ export const data = [
       "2013": 17665.2399979234,
       "2014": 16745.0219796981,
     },
+    continent: "South America",
   },
   {
     name: "Vietnam",
@@ -6186,40 +6389,7 @@ export const data = [
       "2016": 5837.62870356959,
       "2017": 6171.8841923362,
     },
-  },
-  {
-    name: "World",
-    code: "OWID_WRL",
-    GDP: {
-      "1990": 8925.58998321668,
-      "1991": 8906.4142503105,
-      "1992": 8925.2963014691,
-      "1993": 8955.44087748524,
-      "1994": 9083.40042936624,
-      "1995": 9242.1020566821,
-      "1996": 9460.21770734546,
-      "1997": 9696.59627692009,
-      "1998": 9799.54146169369,
-      "1999": 10008.3589879169,
-      "2000": 10345.6022325078,
-      "2001": 10452.5909905398,
-      "2002": 10602.4449894645,
-      "2003": 10865.2677694081,
-      "2004": 11309.7193988054,
-      "2005": 11697.9640983949,
-      "2006": 12170.4937269018,
-      "2007": 12671.5075275574,
-      "2008": 12873.9764042046,
-      "2009": 12669.0770896786,
-      "2010": 13175.933988677,
-      "2011": 13555.6762172915,
-      "2012": 13838.0119841182,
-      "2013": 14137.5469542401,
-      "2014": 14462.3881342532,
-      "2015": 14778.0257397349,
-      "2016": 15080.3792825185,
-      "2017": 15469.2072359318,
-    },
+    continent: "Asia",
   },
   {
     name: "Yemen",
@@ -6253,6 +6423,7 @@ export const data = [
       "2015": 2308.63658440647,
       "2016": 1479.14700530618,
     },
+    continent: "Asia",
   },
   {
     name: "Zambia",
@@ -6287,6 +6458,7 @@ export const data = [
       "2016": 3652.15192618377,
       "2017": 3689.25082617978,
     },
+    continent: "Africa",
   },
   {
     name: "Zimbabwe",
@@ -6321,5 +6493,6 @@ export const data = [
       "2016": 1879.6281185511,
       "2017": 1899.77497716634,
     },
+    continent: "Africa",
   },
 ]

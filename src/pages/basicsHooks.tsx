@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 const Force = () => {
   const [value, setValue] = useState("role")
+
   const data = [
     // {
     //   id: 2,
@@ -92,7 +93,8 @@ const Force = () => {
       .y(d => centerOfGravityForDatum(d).y)
       .strength(1)
 
-    d3.forceSimulation(data)
+    const sim = d3
+      .forceSimulation(data)
       .force(
         "collision",
         d3.forceCollide().radius(d => d.value * 2)
@@ -107,6 +109,7 @@ const Force = () => {
           d => `translate(${d.x} ${d.y})`
         )
       })
+    sim.alpha(1).restart()
   }
 
   function updateLabels() {

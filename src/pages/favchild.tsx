@@ -3,7 +3,7 @@ import * as d3 from "d3"
 import styled from "styled-components"
 
 class Force extends React.Component {
-  svgWidth = 700
+  svgWidth = 1000
   svgHeight = 500
   state = {
     data: [
@@ -66,8 +66,14 @@ class Force extends React.Component {
     setTimeout(() => {
       this.setState({ value: "gender" })
     }, 1001)
+    setTimeout(() => {
+      this.setState({ value: "gender" })
+    }, 1002)
   }
-
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.updateLabels()
+    this.createSimulation()
+  }
   // works out the coordinates of the groups, and adds 'group' property which can be read later to use for the labels of each group
   centerOfGravityForGroups = categories => {
     const firstCenter = this.svgWidth / 4
@@ -103,8 +109,9 @@ class Force extends React.Component {
       .y(d => this.centerOfGravityForDatum(d).y)
       .strength(1)
 
-    d3.forceSimulation(data)
-      .force("collision", d3.forceCollide().radius(11))
+    const sim = d3
+      .forceSimulation(data)
+      .force("collision", d3.forceCollide().radius(12))
       .force("x", forceX)
       .force("y", forceY)
       .alpha(0.1) // small alpha to have the elements move at a slower pace
@@ -115,6 +122,7 @@ class Force extends React.Component {
           d => `translate(${d.x} ${d.y})`
         )
       })
+    // sim.alpha(1).restart()
   }
 
   updateLabels = () => {
@@ -147,30 +155,11 @@ class Force extends React.Component {
       .attr("fill", "lightslategray")
       .attr("y", 100)
   }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    this.updateLabels()
-    this.createSimulation()
-  }
-  redraw = value => {
-    this.setState({ value })
-  }
+
   render() {
-    const { categories } = this.state
-    const selectCategories = Object.keys(categories)
     return (
       <section className="page-excl-nav">
         <div className="force-directed-page">
-          <h1 className="graph-title"> Force directed</h1>
-          <StyledSelect
-            className="force-select"
-            onChange={e => this.redraw(e.target.value)}
-          >
-            {selectCategories.map(c => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </StyledSelect>
           <svg></svg>
         </div>
       </section>
