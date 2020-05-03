@@ -36,47 +36,52 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
 
     drawRects(svg, groups, enteringGroups)
     drawLabels(svg, groups, enteringGroups)
-    onmouseover(svg, groups, enteringGroups)
+    drawTooltip(svg, groups, enteringGroups)
 
     groups.exit().remove()
   }
-  function onmouseover(svg, groups, enteringGroups) {
+  function drawTooltip(svg, groups, enteringGroups) {
+    const graphWidth = svgWidth - sidePadding
     const tooltipGroup = svg
       .append("g")
       .attr("class", "tooltip")
       .attr("visibility", "hidden")
 
-    tooltipGroup
+    const tooltipHeight = 25
+
+    const tooltipBackground = tooltipGroup
       .append("rect")
-      .attr("width", 370)
-      .attr("height", 25)
+      .attr("width", graphWidth)
+      .attr("height", tooltipHeight)
       .attr("fill", "white")
-    // .attr("stroke", "black")
+    // .attr("stroke", "lightslategrey")
     // .attr("stroke-width", 1)
 
+    const tooltipBarHeight = 10
+    const yOffset = (tooltipHeight - tooltipBarHeight) / 2
     tooltipGroup
       .append("rect")
       .attr("class", "tooltip-bar")
       .attr("width", 0)
-      .attr("height", 10)
+      .attr("height", tooltipBarHeight)
       .attr("fill", "white")
       .attr("stroke", "coral")
       .attr("stroke-width", 1)
-      .attr("transform", "translate(0, 7)")
+      .attr("transform", `translate(0, ${yOffset})`)
 
     tooltipGroup
       .append("text")
-      .text("")
       .attr("fill", "black")
-      .style("z-index", "100")
       .attr("text-anchor", "end")
       .style("font-size", "14px")
-      .attr("dx", "350")
-      .attr("dy", "16")
+      .attr("dominant-baseline", "hanging")
+      .attr("dx", graphWidth)
+      .attr("dy", yOffset)
       .attr("font-family", "Major Mono")
 
-    const allGroups = groups
-      .merge(enteringGroups)
+    const allGroups = groups.merge(enteringGroups)
+
+    allGroups
       .on("mouseover", function (d, i) {
         tooltipGroup.style("visibility", "visible")
         const gdpRounded = Math.round(d.GDP[2017])
@@ -87,7 +92,7 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
           .attr("width", () => xScale(d.GDP[2017]) * 1.2)
         tooltipGroup.attr(
           "transform",
-          `translate(${sidePadding - 7},${getYValue(i) - 15})`
+          `translate(${sidePadding - 3},${getYValue(i) - 15})`
         )
       })
       .on("mouseout", function () {
@@ -102,6 +107,7 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
         tooltipGroup.style("visibility", "hidden")
       })
   }
+
   function drawRects(svg, groups, enteringGroups) {
     const enteringRects = enteringGroups
       .append("rect")
