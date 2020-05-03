@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import "../index.css"
 
-import { Title, svgWidth } from "../pages/levels"
+import { Title, svgWidth } from "../pages/index"
 
 export const PageTitle = ({ title }) => {
   return (
@@ -17,6 +17,7 @@ export const PageTitle = ({ title }) => {
 
 const TitleWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
 `

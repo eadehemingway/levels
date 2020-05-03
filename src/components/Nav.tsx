@@ -56,8 +56,13 @@ export default function Nav({
 
 const Container = styled.div`
   width: 100px;
-  min-height: 100%;
+  height: 100vh;
+  top: 0;
   border: 1px solid coral;
+  position: fixed;
+  @media only screen and (max-width: 768px) {
+    width: 50px;
+  }
 `
 const StickyWrapper = styled.div`
   width: 100px;
@@ -67,6 +72,9 @@ const StickyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media only screen and (max-width: 768px) {
+    width: 60px;
+  }
 `
 const Tab = styled.p`
   border: 1px solid coral;
@@ -84,6 +92,12 @@ const Tab = styled.p`
   &:hover {
     background: #fae0d8;
     color: white;
+  }
+  @media only screen and (max-width: 768px) {
+    padding: 3px;
+    font-size: 14px;
+    margin: 6px 3px;
+    width: 36px;
   }
 `
 

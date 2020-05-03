@@ -3,8 +3,7 @@ import styled from "styled-components"
 import "../index.css"
 import { Barchart } from "../components/barchart"
 import * as d3 from "d3"
-import { colors } from "../colors"
-import { Title, svgWidth } from "../pages/levels"
+import { svgWidth } from "../pages/index"
 import { PageTitle } from "./PageTitle"
 
 export const LevelPage = ({ continents, levelData, activePage }) => {
@@ -50,9 +49,4 @@ const SvgWrapper = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`
-const TitleWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
 `

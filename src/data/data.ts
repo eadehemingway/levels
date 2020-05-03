@@ -1524,7 +1524,7 @@ export const data = [
     continent: "Europe",
   },
   {
-    name: "Democratic Republic of Congo",
+    name: "Democratic Rep. of Congo",
     code: "COD",
     GDP: {
       "1990": 1386.83074797511,
@@ -4911,7 +4911,7 @@ export const data = [
     continent: "North America",
   },
   {
-    name: "St Vincent and the Grenadines",
+    name: "St Vincent & Grenadines",
     code: "VCT",
     GDP: {
       "1990": 5576.14920809816,
