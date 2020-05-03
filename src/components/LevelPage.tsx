@@ -3,10 +3,12 @@ import styled from "styled-components"
 import "../index.css"
 import { Barchart } from "../components/barchart"
 import * as d3 from "d3"
+import { colors } from "../colors"
+import { Title } from "../pages/levels"
 
 export const svgWidth = 420
 
-export const LevelPage = ({ continents, levelData }) => {
+export const LevelPage = ({ continents, levelData, activePage }) => {
   function calculateXScale() {
     const levelDataVals = levelData.map(d => d.GDP[2017])
     return d3
@@ -17,27 +19,36 @@ export const LevelPage = ({ continents, levelData }) => {
 
   return (
     <Container>
-      {continents.map((c, i) => {
-        const data = levelData
-          .filter(d => d.continent === c)
-          .sort((a, b) => b.GDP[2017] - a.GDP[2017])
+      <Title>{activePage}</Title>
+      <SvgWrapper>
+        {continents.map((c, i) => {
+          const data = levelData
+            .filter(d => d.continent === c)
+            .sort((a, b) => b.GDP[2017] - a.GDP[2017])
 
-        return (
-          <Barchart
-            getXScale={calculateXScale}
-            data={data}
-            category={c}
-            index={i}
-            key={i}
-          />
-        )
-      })}
+          return (
+            <Barchart
+              isLevelView={true}
+              getXScale={calculateXScale}
+              data={data}
+              category={c}
+              index={i}
+              key={i}
+            />
+          )
+        })}
+      </SvgWrapper>
     </Container>
   )
 }
-
-const Container = styled.div`
+const SvgWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  /* border: 1px solid green; */
+  justify-content: space-around;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
 `

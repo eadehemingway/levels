@@ -4841,7 +4841,7 @@ export const data = [
     continent: "Africa",
   },
   {
-    name: "Saint Kitts and Nevis",
+    name: "St Kitts and Nevis",
     code: "KNA",
     GDP: {
       "1990": 14326.2252441893,
@@ -4911,7 +4911,7 @@ export const data = [
     continent: "North America",
   },
   {
-    name: "Saint Vincent and the Grenadines",
+    name: "St Vincent and the Grenadines",
     code: "VCT",
     GDP: {
       "1990": 5576.14920809816,

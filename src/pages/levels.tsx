@@ -6,6 +6,7 @@ import "../index.css"
 import Nav from "../components/Nav"
 import { LevelPage } from "../components/LevelPage"
 import { ContinentPage } from "../components/ContinentPage"
+import { colors } from "../colors"
 
 export const svgWidth = 420
 
@@ -50,12 +51,17 @@ const IndexPage = () => {
       />
       <PageContents>
         {levelOrContinent === "level" ? (
-          <LevelPage continents={continents} levelData={levelData} />
+          <LevelPage
+            continents={continents}
+            levelData={levelData}
+            activePage={activePage}
+          />
         ) : (
           <ContinentPage
             getLevel={getLevel}
             continentData={continentData}
             levels={levels}
+            activePage={activePage}
           />
         )}
       </PageContents>
@@ -68,8 +74,20 @@ const Container = styled.div`
   width: 100%;
 `
 const PageContents = styled.div`
+  padding: 20px 70px;
   display: flex;
   height: fit-content;
+`
+
+export const Title = styled.h1`
+  color: ${colors.midGrey};
+  font-family: Major Mono;
+  font-size: 28px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid coral;
+  width: fit-content;
+  padding-bottom: 17px;
+  margin-left: 60px;
 `
 
 export default IndexPage

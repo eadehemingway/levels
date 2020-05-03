@@ -24,38 +24,46 @@ export default function Nav({
   }
   return (
     <Container>
-      <LevelWrapper>
-        {levels.map((l, i) => {
-          const isActive = activePage === l
-          return (
-            <Tab key={i} onClick={() => nav(l, "level")} isActive={isActive}>
-              {i + 1}
-            </Tab>
-          )
-        })}
-      </LevelWrapper>
-      <ContinentWrapper>
-        {continents.map((c, i) => {
-          const isActive = activePage === c
-          return (
-            <Tab
-              key={i}
-              onClick={() => nav(c, "continent")}
-              isActive={isActive}
-            >
-              {continentDics[c]}
-            </Tab>
-          )
-        })}
-      </ContinentWrapper>
+      <StickyWrapper>
+        <LevelWrapper>
+          {levels.map((l, i) => {
+            const isActive = activePage === l
+            return (
+              <Tab key={i} onClick={() => nav(l, "level")} isActive={isActive}>
+                {i + 1}
+              </Tab>
+            )
+          })}
+        </LevelWrapper>
+        <ContinentWrapper>
+          {continents.map((c, i) => {
+            const isActive = activePage === c
+            return (
+              <Tab
+                key={i}
+                onClick={() => nav(c, "continent")}
+                isActive={isActive}
+              >
+                {continentDics[c]}
+              </Tab>
+            )
+          })}
+        </ContinentWrapper>
+      </StickyWrapper>
     </Container>
   )
 }
 
 const Container = styled.div`
   width: 100px;
-  height: 100vh;
+  min-height: 100%;
   border: 1px solid coral;
+`
+const StickyWrapper = styled.div`
+  width: 100px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
