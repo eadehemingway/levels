@@ -43,6 +43,7 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .attr("stroke-width", 1)
       .attr("opacity", 1)
       .attr("fill", "transparent")
+      .attr("y", (d, i) => getYValue(i))
 
     const mergedLabelSelection = rects.merge(enteringRects)
 
@@ -51,9 +52,8 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .duration(1000)
       .attr("width", d => xScale(d.GDP[2017]))
       .attr("height", (d, i) => yScale.bandwidth())
-      .attr("y", (d, i) => getYValue(i))
 
-    rects.exit().transition().remove()
+    rects.exit().transition().attr("width", 0).remove()
   }
   function drawTitle(svg) {
     svg
@@ -90,8 +90,9 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .duration(1000)
       .text(d => d.name)
       .attr("y", (d, i) => getYValue(i))
+      .attr("opacity", 1)
 
-    labels.exit().transition().remove()
+    labels.exit().transition().attr("opacity", 0).remove()
   }
   return <StyledSVG id={`svg-${level}`} />
 }
