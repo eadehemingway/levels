@@ -5,12 +5,14 @@ import styled from "styled-components"
 import "../index.css"
 import Nav from "../components/Nav"
 import { LevelPage } from "../components/LevelPage"
+import { ContinentPage } from "../components/ContinentPage"
 
 export const svgWidth = 420
 export const svgHeight = 500
 
 const IndexPage = () => {
   const [activePage, setActivePage] = useState("levelone")
+  const [levelOrContinent, setLevelOrContinent] = useState("level")
 
   const levelData = data.filter(d => {
     switch (activePage) {
@@ -24,6 +26,8 @@ const IndexPage = () => {
         return d.GDP[2017] > 25000
     }
   })
+  const continentData = data.filter(d => d.continent === activePage)
+
   const continents = [
     "Africa",
     "Asia",
@@ -35,13 +39,27 @@ const IndexPage = () => {
 
   return (
     <Container>
-      <Nav setActivePage={setActivePage} activePage={activePage} />
-      <LevelPage
-        continents={continents}
-        levelData={levelData}
-        allData={data}
+      <Nav
+        setActivePage={setActivePage}
         activePage={activePage}
+        continents={continents}
+        setLevelOrContinent={setLevelOrContinent}
       />
+      {levelOrContinent === "level" ? (
+        <LevelPage
+          continents={continents}
+          levelData={levelData}
+          allData={data}
+          activePage={activePage}
+        />
+      ) : (
+        <ContinentPage
+          continents={continents}
+          continentData={continentData}
+          allData={data}
+          activePage={activePage}
+        />
+      )}
     </Container>
   )
 }

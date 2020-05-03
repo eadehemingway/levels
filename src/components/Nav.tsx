@@ -2,24 +2,53 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { navigate } from "gatsby"
 
-export default function Nav({ setActivePage, activePage }) {
-  function nav(endpoint) {
-    // navigate(endpoint)
+export default function Nav({
+  setActivePage,
+  activePage,
+  continents,
+  setLevelOrContinent,
+}) {
+  function nav(endpoint, levelOrContinent) {
+    setLevelOrContinent(levelOrContinent)
     setActivePage(endpoint)
   }
 
   const levels = ["levelone", "leveltwo", "levelthree", "levelfour"]
+
+  const continentDics = {
+    Africa: "AF",
+    Asia: "AS",
+    Europe: "EU",
+    "South America": "SA",
+    "North America": "NA",
+    Oceania: "OC",
+  }
   return (
     <Container>
-      {levels.map((l, i) => {
-        const isActive = activePage === l
-
-        return (
-          <Tab key={i} onClick={() => nav(l)} isActive={isActive}>
-            {i + 1}
-          </Tab>
-        )
-      })}
+      <LevelWrapper>
+        {levels.map((l, i) => {
+          const isActive = activePage === l
+          return (
+            <Tab key={i} onClick={() => nav(l, "level")} isActive={isActive}>
+              {i + 1}
+            </Tab>
+          )
+        })}
+      </LevelWrapper>
+      <ContinentWrapper>
+        {continents.map((c, i) => {
+          const isActive = activePage === c
+          return (
+            <Tab
+              key={i}
+              onClick={() => nav(c, "continent")}
+              isActive={isActive}
+            >
+              {continentDics[c]}
+            </Tab>
+          )
+        })}
+      </ContinentWrapper>
     </Container>
   )
 }
@@ -28,6 +57,9 @@ const Container = styled.div`
   width: 100px;
   height: 100vh;
   border: 1px solid coral;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 const Tab = styled.p`
   border: 1px solid coral;
@@ -42,3 +74,6 @@ const Tab = styled.p`
     return isActive ? "background: #ff9999; color:white;" : null
   }}
 `
+
+const LevelWrapper = styled.div``
+const ContinentWrapper = styled.div``
