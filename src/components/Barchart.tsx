@@ -17,25 +17,26 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .select(`#svg-${level}`)
       .attr("width", svgWidth)
       .attr("height", svgHeight)
-    drawRect(svg)
+    drawGroups(svg)
     drawTitle(svg)
-    drawLables(svg)
   }, [])
+
   useEffect(() => {
     const svg = d3.select(`#svg-${level}`)
-    drawRect(svg)
-    drawLables(svg)
+    drawGroups(svg)
   }, [data])
 
-  function getYValue(i) {
-    return yScale(i) + yScale.bandwidth() / 2 + topPadding
-  }
+  function drawGroups(svg) {
+    const groups = svg.selectAll(`.rect-group`).data(data, d => d.code)
 
-  function drawRect(svg) {
-    const rects = svg.selectAll(`rect`).data(data, d => d.code)
-
-    const enteringRects = rects
+    const enteringGroups = groups
       .enter()
+      .append("g")
+      .attr("class", `rect-group`)
+      .attr("x", sidePadding)
+      .attr("y", (d, i) => getYValue(i))
+
+    const enteringRects = enteringGroups
       .append("rect")
       .attr("class", `rect`)
       .attr("x", sidePadding)
@@ -44,34 +45,8 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .attr("opacity", 1)
       .attr("fill", "transparent")
       .attr("y", (d, i) => getYValue(i))
-
-    const mergedLabelSelection = rects.merge(enteringRects)
-
-    mergedLabelSelection
-      .transition()
-      .duration(1000)
-      .attr("width", d => xScale(d.GDP[2017]))
       .attr("height", (d, i) => yScale.bandwidth())
-
-    rects.exit().transition().attr("width", 0).remove()
-  }
-  function drawTitle(svg) {
-    svg
-      .append("text")
-      .text(continent)
-      .attr("y", 60)
-      .attr("x", sidePadding)
-      .style("font-size", "20")
-      .style("letter-spacing", "0.1rem")
-      .attr("fill", "black")
-      .attr("font-family", "Major Mono")
-  }
-
-  function drawLables(svg) {
-    const labels = svg.selectAll(`.labels`).data(data, d => d.code)
-
-    const enteringLabels = labels
-      .enter()
+    const enteringLabels = enteringGroups
       .append("text")
       .attr("x", svgWidth - sidePadding)
       .attr("y", (d, i) => getYValue(i))
@@ -83,16 +58,56 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .attr("fill", "black")
       .attr("font-family", "Major Mono")
 
-    const mergedLabelSelection = labels.merge(enteringLabels)
+    const rects = svg.selectAll(".rect")
+    const allRects = rects.merge(enteringRects)
 
-    mergedLabelSelection
+    allRects
       .transition()
-      .duration(1000)
+      .delay(500)
+      .duration(500)
+      .attr("width", d => xScale(d.GDP[2017]))
+
+    const labels = svg.selectAll(".labels")
+    const allLabels = labels.merge(enteringLabels)
+
+    allLabels
+      .transition()
+      .delay(400)
+      .duration(200)
       .text(d => d.name)
-      .attr("y", (d, i) => getYValue(i))
       .attr("opacity", 1)
 
-    labels.exit().transition().attr("opacity", 0).remove()
+    groups
+      .exit()
+      .selectAll("rect")
+      .transition()
+      .duration(500)
+      .attr("width", 0)
+      .remove()
+
+    groups
+      .exit()
+      .selectAll(".labels")
+      .transition()
+      .duration(400)
+      .attr("opacity", 0)
+      .remove()
+  }
+
+  function getYValue(i) {
+    return yScale(i) + yScale.bandwidth() / 2 + topPadding
+  }
+
+  function drawTitle(svg) {
+    svg
+      .append("text")
+      .text(continent)
+      .attr("y", 60)
+      .attr("x", sidePadding)
+      .style("font-size", "20")
+      .style("letter-spacing", "0.1rem")
+      .attr("fill", "black")
+      .attr("font-family", "Major Mono")
   }
   return <StyledSVG id={`svg-${level}`} />
 }
