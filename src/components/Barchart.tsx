@@ -5,9 +5,8 @@ import "../index.css"
 import { svgWidth, svgHeight } from "./LevelPage"
 
 const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
-  console.log("barchart", index)
   if (data.length === 0) return null
-  console.log("after null")
+
   const xScale = getXScale()
   const yScale = getYScale()
   const topPadding = 70
@@ -37,10 +36,72 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
 
     drawRects(svg, groups, enteringGroups)
     drawLabels(svg, groups, enteringGroups)
+    onmouseover(svg, groups, enteringGroups)
 
     groups.exit().remove()
   }
+  function onmouseover(svg, groups, enteringGroups) {
+    const tooltipGroup = svg
+      .append("g")
+      .attr("class", "tooltip")
+      .attr("visibility", "hidden")
 
+    tooltipGroup
+      .append("rect")
+      .attr("width", 370)
+      .attr("height", 25)
+      .attr("fill", "white")
+    // .attr("stroke", "black")
+    // .attr("stroke-width", 1)
+
+    tooltipGroup
+      .append("rect")
+      .attr("class", "tooltip-bar")
+      .attr("width", 0)
+      .attr("height", 10)
+      .attr("fill", "white")
+      .attr("stroke", "coral")
+      .attr("stroke-width", 1)
+      .attr("transform", "translate(0, 7)")
+
+    tooltipGroup
+      .append("text")
+      .text("")
+      .attr("fill", "black")
+      .style("z-index", "100")
+      .attr("text-anchor", "end")
+      .style("font-size", "14px")
+      .attr("dx", "350")
+      .attr("dy", "16")
+      .attr("font-family", "Major Mono")
+
+    const allGroups = groups
+      .merge(enteringGroups)
+      .on("mouseover", function (d, i) {
+        tooltipGroup.style("visibility", "visible")
+        const gdpRounded = Math.round(d.GDP[2017])
+        const label = `${d.name}: $${gdpRounded}`
+        tooltipGroup.select("text").text(label)
+        tooltipGroup
+          .select(".tooltip-bar")
+          .attr("width", () => xScale(d.GDP[2017]) * 1.2)
+        tooltipGroup.attr(
+          "transform",
+          `translate(${sidePadding - 7},${getYValue(i) - 15})`
+        )
+      })
+      .on("mouseout", function () {
+        tooltipGroup.style("visibility", "hidden")
+      })
+
+    tooltipGroup
+      .on("mouseover", function (d, i) {
+        tooltipGroup.style("visibility", "visible")
+      })
+      .on("mouseout", function () {
+        tooltipGroup.style("visibility", "hidden")
+      })
+  }
   function drawRects(svg, groups, enteringGroups) {
     const enteringRects = enteringGroups
       .append("rect")
