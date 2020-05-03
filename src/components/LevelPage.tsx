@@ -4,9 +4,8 @@ import "../index.css"
 import { Barchart } from "../components/barchart"
 import * as d3 from "d3"
 import { colors } from "../colors"
-import { Title } from "../pages/levels"
-
-export const svgWidth = 420
+import { Title, svgWidth } from "../pages/levels"
+import { PageTitle } from "./PageTitle"
 
 export const LevelPage = ({ continents, levelData, activePage }) => {
   function calculateXScale() {
@@ -19,7 +18,7 @@ export const LevelPage = ({ continents, levelData, activePage }) => {
 
   return (
     <Container>
-      <Title>{activePage}</Title>
+      <PageTitle title={activePage} />
       <SvgWrapper>
         {continents.map((c, i) => {
           const data = levelData
@@ -51,4 +50,9 @@ const SvgWrapper = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`
+const TitleWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 `

@@ -5,6 +5,7 @@ import { Barchart } from "../components/barchart"
 import * as d3 from "d3"
 import { colors } from "../colors"
 import { Title } from "../pages/levels"
+import { PageTitle } from "./PageTitle"
 
 export const svgWidth = 420
 export const svgHeight = 500
@@ -25,7 +26,7 @@ export const ContinentPage = ({
 
   return (
     <Container>
-      <Title>{activePage}</Title>
+      <PageTitle title={activePage} />
       <SvgWrapper>
         {levels.map((level, i) => {
           const data = continentData

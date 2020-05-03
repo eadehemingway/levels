@@ -87,7 +87,6 @@ export const Title = styled.h1`
   border-bottom: 1px solid coral;
   width: fit-content;
   padding-bottom: 17px;
-  margin-left: 60px;
 `
 
 export default IndexPage

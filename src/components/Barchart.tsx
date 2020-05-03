@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react"
 import * as d3 from "d3"
 import styled from "styled-components"
 import "../index.css"
-import { svgWidth } from "./LevelPage"
+
 import { colors } from "../colors"
+import { svgWidth } from "../pages/levels"
 
 export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   if (isLevelView && data.length === 0) return null
 
   const xScale = getXScale()
   const topPadding = 70
-  const sidePadding = 50
+
   const rectHeight = 4
-  const graphWidth = svgWidth - sidePadding
 
   useEffect(() => {
     drawGraph()
@@ -55,7 +55,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
 
     tooltipGroup
       .append("rect")
-      .attr("width", graphWidth)
+      .attr("width", svgWidth)
       .attr("height", tooltipHeight)
       .attr("fill", "white")
     // .attr("stroke", "lightslategrey")
@@ -90,7 +90,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
       .attr("text-anchor", "end")
       .style("font-size", "14px")
       .attr("dominant-baseline", "hanging")
-      .attr("dx", graphWidth)
+      .attr("dx", svgWidth)
       .attr("dy", yOffset)
       .attr("font-family", "Major Mono")
   }
@@ -106,10 +106,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
     allGroups
       .on("mouseover", function (d, i) {
         tooltipGroup
-          .attr(
-            "transform",
-            `translate(${sidePadding - 3},${getYValue(i) - 10})`
-          )
+          .attr("transform", `translate(${-3},${getYValue(i) - 10})`)
           .style("visibility", "visible")
 
         const gdpRounded = Math.round(d.GDP[2017])
@@ -122,10 +119,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
 
         textBackground
           .attr("width", textBackgroundWidth)
-          .attr(
-            "transform",
-            `translate(${graphWidth - textBackgroundWidth}, 0)`
-          )
+          .attr("transform", `translate(${svgWidth - textBackgroundWidth}, 0)`)
       })
       .on("mouseout", function () {
         tooltipGroup.style("visibility", "hidden")
@@ -144,7 +138,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
     const enteringRects = enteringGroups
       .append("rect")
       .attr("class", `rect`)
-      .attr("x", sidePadding)
+      .attr("x", 0)
       .attr("stroke", "coral")
       .attr("stroke-width", 1)
       .attr("opacity", 1)
@@ -172,7 +166,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   function drawLabels(svg, groups, enteringGroups) {
     const enteringLabels = enteringGroups
       .append("text")
-      .attr("x", svgWidth - sidePadding)
+      .attr("x", svgWidth)
       .attr("y", (d, i) => getYValue(i))
       .attr("class", "labels")
       .style("font-size", "10")
@@ -221,7 +215,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
       .append("text")
       .text(category)
       .attr("y", 60)
-      .attr("x", sidePadding)
+      .attr("x", 0)
       .style("font-size", "20")
       .style("letter-spacing", "0.1rem")
       .attr("fill", colors.darkGrey)
