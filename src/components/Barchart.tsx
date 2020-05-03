@@ -11,7 +11,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
 
   const xScale = getXScale()
   const topPadding = 70
-
+  const transition = 500
   const rectHeight = 4
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
     drawInitialTooltip()
     addTooltipFunctionality(svg, groups, enteringGroups)
 
-    groups.exit().remove()
+    groups.exit().transition().delay(transition).remove()
   }
 
   function drawInitialTooltip() {
@@ -151,15 +151,15 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
 
     allRects
       .transition()
-      .delay(500)
-      .duration(500)
+      .delay(transition)
+      .duration(transition)
       .attr("width", d => xScale(d.GDP[2017]))
 
     groups
       .exit()
       .selectAll("rect")
       .transition()
-      .duration(500)
+      .duration(transition)
       .attr("width", 0)
       .remove()
   }
