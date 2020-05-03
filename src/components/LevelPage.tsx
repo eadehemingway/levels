@@ -2,16 +2,30 @@ import React from "react"
 import styled from "styled-components"
 import "../index.css"
 import Barchart from "../components/barchart"
+import * as d3 from "d3"
 
 export const svgWidth = 420
 export const svgHeight = 500
 
-export const LevelPage = ({
-  continents,
-  calculateXScale,
-  calculateYScale,
-  levelData,
-}) => {
+export const LevelPage = ({ continents, levelData, allData, activePage }) => {
+  const levelOneData = allData.filter(d => d.GDP[2017] < 4000)
+  const levelDataVals = levelData.map(d => d.GDP[2017])
+
+  function calculateXScale() {
+    return d3
+      .scaleLinear()
+      .domain([0, d3.max(levelDataVals) * 3])
+      .range([0, svgWidth])
+  }
+  function calculateYScale() {
+    const rangeArr = levelOneData.length - 8 // todo make this not a magic number...
+
+    return d3
+      .scaleBand()
+      .domain(d3.range(rangeArr)) // using levelone data because it is the one with the most amount of countries in one continent category
+      .rangeRound([0, svgHeight])
+      .paddingInner(0.6)
+  }
   return (
     <Container>
       {continents.map((c, i) => {
@@ -25,7 +39,8 @@ export const LevelPage = ({
             getYScale={calculateYScale}
             data={data}
             continent={c}
-            level={i}
+            index={i}
+            key={i}
           />
         )
       })}

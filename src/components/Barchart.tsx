@@ -4,9 +4,10 @@ import styled from "styled-components"
 import "../index.css"
 import { svgWidth, svgHeight } from "./LevelPage"
 
-const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
+const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
+  console.log("barchart", index)
   if (data.length === 0) return null
-
+  console.log("after null")
   const xScale = getXScale()
   const yScale = getYScale()
   const topPadding = 70
@@ -14,7 +15,7 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
 
   useEffect(() => {
     const svg = d3
-      .select(`#svg-${level}`)
+      .select(`#svg-${index}`)
       .attr("width", svgWidth)
       .attr("height", svgHeight)
     drawGraph()
@@ -26,18 +27,18 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
   }, [data])
 
   function drawGraph() {
-    const svg = d3.select(`#svg-${level}`)
+    const svg = d3.select(`#svg-${index}`)
     const groups = svg.selectAll(`.rect-group`).data(data, d => d.code)
 
     const enteringGroups = groups
       .enter()
       .append("g")
       .attr("class", `rect-group`)
-      .attr("x", sidePadding)
-      .attr("y", (d, i) => getYValue(i))
 
     drawRects(svg, groups, enteringGroups)
     drawLabels(svg, groups, enteringGroups)
+
+    groups.exit().remove()
   }
 
   function drawRects(svg, groups, enteringGroups) {
@@ -116,7 +117,7 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .attr("fill", "black")
       .attr("font-family", "Major Mono")
   }
-  return <StyledSVG id={`svg-${level}`} />
+  return <StyledSVG id={`svg-${index}`} />
 }
 
 const StyledSVG = styled.svg``

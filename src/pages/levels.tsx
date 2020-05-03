@@ -33,31 +33,14 @@ const IndexPage = () => {
     "Oceania",
   ]
 
-  const levelDataVals = levelData.map(d => d.GDP[2017])
-  const levelOneData = data.filter(d => d.GDP[2017] < 4000)
-  function calculateXScale() {
-    return d3
-      .scaleLinear()
-      .domain([0, d3.max(levelDataVals) * 3])
-      .range([0, svgWidth])
-  }
-  function calculateYScale() {
-    const rangeArr = levelOneData.length - 8 // todo make this not a magic number...
-
-    return d3
-      .scaleBand()
-      .domain(d3.range(rangeArr)) // using levelone data because it is the one with the most amount of countries in one continent category
-      .rangeRound([0, svgHeight])
-      .paddingInner(0.6)
-  }
   return (
     <Container>
       <Nav setActivePage={setActivePage} activePage={activePage} />
       <LevelPage
-        calculateXScale={calculateXScale}
-        calculateYScale={calculateYScale}
         continents={continents}
         levelData={levelData}
+        allData={data}
+        activePage={activePage}
       />
     </Container>
   )
