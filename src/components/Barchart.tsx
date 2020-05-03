@@ -17,16 +17,16 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .select(`#svg-${level}`)
       .attr("width", svgWidth)
       .attr("height", svgHeight)
-    drawGroups(svg)
+    drawGraph()
     drawTitle(svg)
   }, [])
 
   useEffect(() => {
-    const svg = d3.select(`#svg-${level}`)
-    drawGroups(svg)
+    drawGraph()
   }, [data])
 
-  function drawGroups(svg) {
+  function drawGraph() {
+    const svg = d3.select(`#svg-${level}`)
     const groups = svg.selectAll(`.rect-group`).data(data, d => d.code)
 
     const enteringGroups = groups
@@ -36,6 +36,11 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .attr("x", sidePadding)
       .attr("y", (d, i) => getYValue(i))
 
+    drawRects(svg, groups, enteringGroups)
+    drawLabels(svg, groups, enteringGroups)
+  }
+
+  function drawRects(svg, groups, enteringGroups) {
     const enteringRects = enteringGroups
       .append("rect")
       .attr("class", `rect`)
@@ -46,6 +51,25 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .attr("fill", "transparent")
       .attr("y", (d, i) => getYValue(i))
       .attr("height", (d, i) => yScale.bandwidth())
+
+    const rects = svg.selectAll(".rect")
+    const allRects = rects.merge(enteringRects)
+
+    allRects
+      .transition()
+      .delay(500)
+      .duration(500)
+      .attr("width", d => xScale(d.GDP[2017]))
+
+    groups
+      .exit()
+      .selectAll("rect")
+      .transition()
+      .duration(500)
+      .attr("width", 0)
+      .remove()
+  }
+  function drawLabels(svg, groups, enteringGroups) {
     const enteringLabels = enteringGroups
       .append("text")
       .attr("x", svgWidth - sidePadding)
@@ -58,15 +82,6 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .attr("fill", "black")
       .attr("font-family", "Major Mono")
 
-    const rects = svg.selectAll(".rect")
-    const allRects = rects.merge(enteringRects)
-
-    allRects
-      .transition()
-      .delay(500)
-      .duration(500)
-      .attr("width", d => xScale(d.GDP[2017]))
-
     const labels = svg.selectAll(".labels")
     const allLabels = labels.merge(enteringLabels)
 
@@ -76,14 +91,6 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
       .duration(200)
       .text(d => d.name)
       .attr("opacity", 1)
-
-    groups
-      .exit()
-      .selectAll("rect")
-      .transition()
-      .duration(500)
-      .attr("width", 0)
-      .remove()
 
     groups
       .exit()
