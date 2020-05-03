@@ -15,13 +15,13 @@ const IndexPage = () => {
   const levelData = data.filter(d => {
     switch (activePage) {
       case "levelone":
-        return d.GDP[2017] < 4000
+        return d.GDP[2017] < 2800
       case "leveltwo":
-        return d.GDP[2017] > 4000 && d.GDP[2017] < 16000
+        return d.GDP[2017] > 2800 && d.GDP[2017] < 8000
       case "levelthree":
-        return d.GDP[2017] > 16000 && d.GDP[2017] < 32000
+        return d.GDP[2017] > 8000 && d.GDP[2017] < 25000
       case "levelfour":
-        return d.GDP[2017] > 32000
+        return d.GDP[2017] > 25000
     }
   })
   const continents = [
