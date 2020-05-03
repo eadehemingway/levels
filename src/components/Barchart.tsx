@@ -70,6 +70,16 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
       .attr("transform", `translate(0, ${yOffset})`)
 
     tooltipGroup
+      .append("rect")
+      .attr("class", "text-background")
+      .attr("width", 0)
+      .attr("height", tooltipHeight)
+      .attr("fill", "white")
+    // .attr("stroke", "black")
+    // .attr("stroke-width", 1)
+    // .attr("transform", `translate(${graphWidth}, ${yOffset})`)
+
+    tooltipGroup
       .append("text")
       .attr("fill", "black")
       .attr("text-anchor", "end")
@@ -86,7 +96,20 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
         tooltipGroup.style("visibility", "visible")
         const gdpRounded = Math.round(d.GDP[2017])
         const label = `${d.name}: $${gdpRounded}`
-        tooltipGroup.select("text").text(label)
+        let fontsize = 14
+        // if (label.length > 25) {
+        //   fontsize = 12
+        // }
+        const textBackgroundWidth = label.length * 10.5
+        tooltipGroup
+          .select(".text-background")
+          .attr("width", textBackgroundWidth)
+          .attr(
+            "transform",
+            `translate(${graphWidth - textBackgroundWidth}, 0)`
+          )
+
+        tooltipGroup.select("text").text(label).attr("font-size", fontsize)
         tooltipGroup
           .select(".tooltip-bar")
           .attr("width", () => xScale(d.GDP[2017]) * 1.2)
