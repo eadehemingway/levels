@@ -217,7 +217,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   function drawTitle() {
     const svg = d3.select(`#svg-${index}`)
 
-    svg
+    const title = svg
       .append("text")
       .text(category)
       .attr("y", 60)
@@ -226,10 +226,63 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
       .style("letter-spacing", "0.1rem")
       .attr("fill", colors.darkGrey)
       .attr("font-family", "Major Mono")
+      .attr("cursor", "default")
+
+    if (!isLevelView) {
+      const tooltipGroup = svg
+        .append("g")
+        .attr("class", "title-tooltip")
+        .attr("visibility", "hidden")
+      tooltipGroup
+        .append("rect")
+        .attr("width", 300)
+        .attr("height", 50)
+        .attr("fill", "white")
+        .attr("stroke", "coral")
+        .attr("stroke-width", 1)
+
+      tooltipGroup
+        .append("text")
+        .text(() => getTitleTooltipText()[0])
+        .attr("fill", colors.darkGrey)
+        .attr("font-family", "Major Mono")
+        .attr("font-size", 12)
+        .attr("dx", 20)
+        .attr("dy", 20)
+      tooltipGroup
+        .append("text")
+        .text(() => getTitleTooltipText()[1])
+        .attr("fill", colors.darkGrey)
+        .attr("font-family", "Major Mono")
+        .attr("font-size", 12)
+        .attr("dx", 20)
+        .attr("dy", 40)
+
+      title
+        .on("mouseover", d => {
+          tooltipGroup
+            .attr("visibility", "visible")
+            .attr("transform", `translate(${60},${-10})`)
+        })
+        .on("mouseout", () => tooltipGroup.attr("visibility", "hidden"))
+    }
+  }
+  function getTitleTooltipText() {
+    switch (category) {
+      case "Level One":
+        return ["gdp ppp is less than $2800"]
+      case "Level Two":
+        return ["gdp ppp is greater than $2800", " but less than $8000"]
+      case "Level Three":
+        return ["gdp ppp is greater than $8000,", "but less than $25000"]
+      case "Level Four":
+        return ["gdp ppp is greater than $25000"]
+    }
   }
   return <StyledSVG id={`svg-${index}`} />
 }
 
 const StyledSVG = styled.svg`
+  overflow: visible;
   /* border: 2px solid lavender; */
 `
