@@ -8,7 +8,6 @@ import { LevelPage } from "../components/LevelPage"
 import { ContinentPage } from "../components/ContinentPage"
 
 export const svgWidth = 420
-export const svgHeight = 500
 
 const IndexPage = () => {
   const [activePage, setActivePage] = useState("Level One")
@@ -49,20 +48,17 @@ const IndexPage = () => {
         setLevelOrContinent={setLevelOrContinent}
         levels={levels}
       />
-      {levelOrContinent === "level" ? (
-        <LevelPage
-          continents={continents}
-          levelData={levelData}
-          allData={data}
-        />
-      ) : (
-        <ContinentPage
-          getLevel={getLevel}
-          continentData={continentData}
-          allData={data}
-          levels={levels}
-        />
-      )}
+      <PageContents>
+        {levelOrContinent === "level" ? (
+          <LevelPage continents={continents} levelData={levelData} />
+        ) : (
+          <ContinentPage
+            getLevel={getLevel}
+            continentData={continentData}
+            levels={levels}
+          />
+        )}
+      </PageContents>
     </Container>
   )
 }
@@ -70,6 +66,10 @@ const IndexPage = () => {
 const Container = styled.div`
   display: flex;
   width: 100%;
+`
+const PageContents = styled.div`
+  display: flex;
+  height: fit-content;
 `
 
 export default IndexPage

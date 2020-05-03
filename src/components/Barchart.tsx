@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react"
 import * as d3 from "d3"
 import styled from "styled-components"
 import "../index.css"
-import { svgWidth, svgHeight } from "./LevelPage"
+import { svgWidth } from "./LevelPage"
 import { colors } from "../colors"
 
-const Barchart = ({ data, getXScale, getYScale, category, index }) => {
+export const Barchart = ({ data, getXScale, category, index }) => {
   if (data.length === 0) return null
 
   const xScale = getXScale()
-  const yScale = getYScale()
   const topPadding = 70
   const sidePadding = 50
+  const rectHeight = 4
 
   useEffect(() => {
     const svg = d3
       .select(`#svg-${index}`)
       .attr("width", svgWidth)
-      .attr("height", svgHeight)
+      .attr("height", getSvgHeight())
     drawGraph()
     drawTitle(svg)
   }, [])
@@ -106,7 +106,7 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
             `translate(${graphWidth - textBackgroundWidth}, 0)`
           )
 
-        tooltipText.text(label)
+        tooltipText.text(label).attr("cursor", "default")
         tooltipBar.attr("width", () => xScale(d.GDP[2017]) * 1.2)
         tooltipGroup.attr(
           "transform",
@@ -136,7 +136,7 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
       .attr("opacity", 1)
       .attr("fill", "transparent")
       .attr("y", (d, i) => getYValue(i))
-      .attr("height", (d, i) => yScale.bandwidth())
+      .attr("height", rectHeight)
 
     const rects = svg.selectAll(".rect")
     const allRects = rects.merge(enteringRects)
@@ -187,8 +187,16 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
       .remove()
   }
 
+  const barpadding = 8
   function getYValue(i) {
-    return yScale(i) + yScale.bandwidth() / 2 + topPadding
+    const position = (barpadding + rectHeight) * i
+    const yVal = position + topPadding + 20
+    return yVal
+  }
+  function getSvgHeight() {
+    const rectHeights = data.length * (barpadding + rectHeight)
+    const svgHeight = rectHeights + topPadding + 50
+    return svgHeight
   }
 
   function drawTitle(svg) {
@@ -206,5 +214,3 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
 }
 
 const StyledSVG = styled.svg``
-
-export default Barchart
