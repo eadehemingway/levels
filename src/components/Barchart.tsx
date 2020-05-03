@@ -115,7 +115,7 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
           .attr("width", () => xScale(d.GDP[2017]) * 1.2)
         tooltipGroup.attr(
           "transform",
-          `translate(${sidePadding - 3},${getYValue(i) - 15})`
+          `translate(${sidePadding - 3},${getYValue(i) - 10})`
         )
       })
       .on("mouseout", function () {
