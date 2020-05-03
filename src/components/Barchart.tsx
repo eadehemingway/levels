@@ -4,7 +4,7 @@ import styled from "styled-components"
 import "../index.css"
 import { svgWidth, svgHeight } from "./LevelPage"
 
-const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
+const Barchart = ({ data, getXScale, getYScale, category, index }) => {
   if (data.length === 0) return null
 
   const xScale = getXScale()
@@ -199,7 +199,7 @@ const Barchart = ({ data, getXScale, getYScale, continent, index }) => {
   function drawTitle(svg) {
     svg
       .append("text")
-      .text(continent)
+      .text(category)
       .attr("y", 60)
       .attr("x", sidePadding)
       .style("font-size", "20")

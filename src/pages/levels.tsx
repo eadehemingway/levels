@@ -11,21 +11,23 @@ export const svgWidth = 420
 export const svgHeight = 500
 
 const IndexPage = () => {
-  const [activePage, setActivePage] = useState("levelone")
+  const [activePage, setActivePage] = useState("Level One")
   const [levelOrContinent, setLevelOrContinent] = useState("level")
 
-  const levelData = data.filter(d => {
-    switch (activePage) {
-      case "levelone":
-        return d.GDP[2017] < 2800
-      case "leveltwo":
-        return d.GDP[2017] > 2800 && d.GDP[2017] < 8000
-      case "levelthree":
-        return d.GDP[2017] > 8000 && d.GDP[2017] < 25000
-      case "levelfour":
-        return d.GDP[2017] > 25000
+  function getLevel(val, level) {
+    switch (level) {
+      case "Level One":
+        return val < 2800
+      case "Level Two":
+        return val > 2800 && val < 8000
+      case "Level Three":
+        return val > 8000 && val < 25000
+      case "Level Four":
+        return val > 25000
     }
-  })
+  }
+
+  const levelData = data.filter(d => getLevel(d.GDP[2017], activePage))
   const continentData = data.filter(d => d.continent === activePage)
 
   const continents = [
@@ -36,6 +38,7 @@ const IndexPage = () => {
     "North America",
     "Oceania",
   ]
+  const levels = ["Level One", "Level Two", "Level Three", "Level Four"]
 
   return (
     <Container>
@@ -44,20 +47,20 @@ const IndexPage = () => {
         activePage={activePage}
         continents={continents}
         setLevelOrContinent={setLevelOrContinent}
+        levels={levels}
       />
       {levelOrContinent === "level" ? (
         <LevelPage
           continents={continents}
           levelData={levelData}
           allData={data}
-          activePage={activePage}
         />
       ) : (
         <ContinentPage
-          continents={continents}
+          getLevel={getLevel}
           continentData={continentData}
           allData={data}
-          activePage={activePage}
+          levels={levels}
         />
       )}
     </Container>

@@ -7,13 +7,12 @@ export default function Nav({
   activePage,
   continents,
   setLevelOrContinent,
+  levels,
 }) {
   function nav(endpoint, levelOrContinent) {
     setLevelOrContinent(levelOrContinent)
     setActivePage(endpoint)
   }
-
-  const levels = ["levelone", "leveltwo", "levelthree", "levelfour"]
 
   const continentDics = {
     Africa: "AF",

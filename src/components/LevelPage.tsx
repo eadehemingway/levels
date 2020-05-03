@@ -7,7 +7,7 @@ import * as d3 from "d3"
 export const svgWidth = 420
 export const svgHeight = 500
 
-export const LevelPage = ({ continents, levelData, allData, activePage }) => {
+export const LevelPage = ({ continents, levelData, allData }) => {
   const levelOneData = allData.filter(d => d.GDP[2017] < 4000)
   const levelDataVals = levelData.map(d => d.GDP[2017])
 
@@ -38,7 +38,7 @@ export const LevelPage = ({ continents, levelData, allData, activePage }) => {
             getXScale={calculateXScale}
             getYScale={calculateYScale}
             data={data}
-            continent={c}
+            category={c}
             index={i}
             key={i}
           />

@@ -7,12 +7,7 @@ import * as d3 from "d3"
 export const svgWidth = 420
 export const svgHeight = 500
 
-export const ContinentPage = ({
-  continents,
-  continentData,
-  allData,
-  activePage,
-}) => {
+export const ContinentPage = ({ continentData, allData, levels, getLevel }) => {
   const levelOneData = allData.filter(d => d.GDP[2017] < 4000)
   const levelDataVals = continentData.map(d => d.GDP[2017])
 
@@ -32,20 +27,6 @@ export const ContinentPage = ({
       .paddingInner(0.6)
   }
 
-  function getLevel(val, level) {
-    switch (level) {
-      case "Level One":
-        return val < 2800
-      case "Level Two":
-        return val > 2800 && val < 8000
-      case "Level Three":
-        return val > 8000 && val < 25000
-      case "Level Four":
-        return val > 25000
-    }
-  }
-
-  const levels = ["Level One", "Level Two", "Level Three", "Level Four"]
   return (
     <Container>
       {levels.map((level, i) => {
@@ -58,7 +39,7 @@ export const ContinentPage = ({
             getXScale={calculateXScale}
             getYScale={calculateYScale}
             data={data}
-            continent={level}
+            category={level}
             index={i}
             key={i}
           />
