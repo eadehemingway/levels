@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
-import { navigate } from "gatsby"
+import { colors } from "../colors"
 
 export default function Nav({
   setActivePage,
@@ -66,12 +66,17 @@ const Tab = styled.p`
   font-size: 20px;
   font-weight: 1000;
   font-family: Major Mono;
+  color: ${colors.darkGrey};
   cursor: pointer;
   margin: 15px;
   text-align: center;
   ${({ isActive }) => {
-    return isActive ? "background: #ff9999; color:white;" : null
+    return isActive ? "background:  #f09c80; color:white;" : null
   }}
+  &:hover {
+    background: #fae0d8;
+    color: white;
+  }
 `
 
 const LevelWrapper = styled.div``

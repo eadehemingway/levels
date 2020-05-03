@@ -3,6 +3,7 @@ import * as d3 from "d3"
 import styled from "styled-components"
 import "../index.css"
 import { svgWidth, svgHeight } from "./LevelPage"
+import { colors } from "../colors"
 
 const Barchart = ({ data, getXScale, getYScale, category, index }) => {
   if (data.length === 0) return null
@@ -49,7 +50,7 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
 
     const tooltipHeight = 25
 
-    const tooltipBackground = tooltipGroup
+    tooltipGroup
       .append("rect")
       .attr("width", graphWidth)
       .attr("height", tooltipHeight)
@@ -59,7 +60,7 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
 
     const tooltipBarHeight = 10
     const yOffset = (tooltipHeight - tooltipBarHeight) / 2
-    tooltipGroup
+    const tooltipBar = tooltipGroup
       .append("rect")
       .attr("class", "tooltip-bar")
       .attr("width", 0)
@@ -69,7 +70,7 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
       .attr("stroke-width", 1)
       .attr("transform", `translate(0, ${yOffset})`)
 
-    tooltipGroup
+    const textBackground = tooltipGroup
       .append("rect")
       .attr("class", "text-background")
       .attr("width", 0)
@@ -79,9 +80,9 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
     // .attr("stroke-width", 1)
     // .attr("transform", `translate(${graphWidth}, ${yOffset})`)
 
-    tooltipGroup
+    const tooltipText = tooltipGroup
       .append("text")
-      .attr("fill", "black")
+      .attr("fill", colors.darkGrey)
       .attr("text-anchor", "end")
       .style("font-size", "14px")
       .attr("dominant-baseline", "hanging")
@@ -96,23 +97,17 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
         tooltipGroup.style("visibility", "visible")
         const gdpRounded = Math.round(d.GDP[2017])
         const label = `${d.name}: $${gdpRounded}`
-        let fontsize = 14
-        // if (label.length > 25) {
-        //   fontsize = 12
-        // }
+
         const textBackgroundWidth = label.length * 10.5
-        tooltipGroup
-          .select(".text-background")
+        textBackground
           .attr("width", textBackgroundWidth)
           .attr(
             "transform",
             `translate(${graphWidth - textBackgroundWidth}, 0)`
           )
 
-        tooltipGroup.select("text").text(label).attr("font-size", fontsize)
-        tooltipGroup
-          .select(".tooltip-bar")
-          .attr("width", () => xScale(d.GDP[2017]) * 1.2)
+        tooltipText.text(label)
+        tooltipBar.attr("width", () => xScale(d.GDP[2017]) * 1.2)
         tooltipGroup.attr(
           "transform",
           `translate(${sidePadding - 3},${getYValue(i) - 10})`
@@ -170,7 +165,7 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
       .style("letter-spacing", "0.1rem")
       .attr("text-anchor", "end")
       .attr("dominant-baseline", "hanging")
-      .attr("fill", "black")
+      .attr("fill", colors.darkGrey)
       .attr("font-family", "Major Mono")
 
     const labels = svg.selectAll(".labels")
@@ -204,7 +199,7 @@ const Barchart = ({ data, getXScale, getYScale, category, index }) => {
       .attr("x", sidePadding)
       .style("font-size", "20")
       .style("letter-spacing", "0.1rem")
-      .attr("fill", "black")
+      .attr("fill", colors.darkGrey)
       .attr("font-family", "Major Mono")
   }
   return <StyledSVG id={`svg-${index}`} />
