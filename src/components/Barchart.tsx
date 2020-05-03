@@ -6,7 +6,7 @@ import { svgWidth } from "./LevelPage"
 import { colors } from "../colors"
 
 export const Barchart = ({ data, getXScale, category, index }) => {
-  if (data.length === 0) return null
+  // if (data.length === 0) return null
 
   const xScale = getXScale()
   const topPadding = 70
@@ -14,12 +14,8 @@ export const Barchart = ({ data, getXScale, category, index }) => {
   const rectHeight = 4
 
   useEffect(() => {
-    const svg = d3
-      .select(`#svg-${index}`)
-      .attr("width", svgWidth)
-      .attr("height", getSvgHeight())
     drawGraph()
-    drawTitle(svg)
+    drawTitle()
   }, [])
 
   useEffect(() => {
@@ -27,7 +23,11 @@ export const Barchart = ({ data, getXScale, category, index }) => {
   }, [data])
 
   function drawGraph() {
-    const svg = d3.select(`#svg-${index}`)
+    const svg = d3
+      .select(`#svg-${index}`)
+      .attr("width", svgWidth)
+      .attr("height", getSvgHeight())
+
     const groups = svg.selectAll(`.rect-group`).data(data, d => d.code)
 
     const enteringGroups = groups
@@ -195,11 +195,14 @@ export const Barchart = ({ data, getXScale, category, index }) => {
   }
   function getSvgHeight() {
     const rectHeights = data.length * (barpadding + rectHeight)
-    const svgHeight = rectHeights + topPadding + 50
+    const svgHeight = d3.max([rectHeights + topPadding + 50, 300])
+    console.log("svgHeight:", svgHeight)
     return svgHeight
   }
 
-  function drawTitle(svg) {
+  function drawTitle() {
+    const svg = d3.select(`#svg-${index}`)
+
     svg
       .append("text")
       .text(category)
