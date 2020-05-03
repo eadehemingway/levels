@@ -8,6 +8,7 @@ import { LevelPage } from "../components/LevelPage"
 
 export const svgWidth = 420
 export const svgHeight = 500
+
 const IndexPage = () => {
   const [activePage, setActivePage] = useState("levelone")
 
@@ -33,7 +34,6 @@ const IndexPage = () => {
   ]
 
   const levelDataVals = levelData.map(d => d.GDP[2017])
-  const data2017Vals = data.map(d => d.GDP[2017])
 
   function calculateXScale() {
     return d3
@@ -48,7 +48,6 @@ const IndexPage = () => {
       .rangeRound([0, svgHeight])
       .paddingInner(0.6)
   }
-
   return (
     <Container>
       <Nav setActivePage={setActivePage} activePage={activePage} />

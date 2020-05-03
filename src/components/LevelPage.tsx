@@ -5,6 +5,7 @@ import Barchart from "../components/barchart"
 
 export const svgWidth = 420
 export const svgHeight = 500
+
 export const LevelPage = ({
   continents,
   calculateXScale,

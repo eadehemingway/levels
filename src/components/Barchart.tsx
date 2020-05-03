@@ -21,25 +21,39 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
     drawTitle(svg)
     drawLables(svg)
   }, [])
+  useEffect(() => {
+    const svg = d3.select(`#svg-${level}`)
+    drawRect(svg)
+    drawLables(svg)
+  }, [data])
 
   function getYValue(i) {
     return yScale(i) + yScale.bandwidth() / 2 + topPadding
   }
 
   function drawRect(svg) {
-    const groups = svg.selectAll(`g`).data(data).enter().append("g")
+    const rects = svg.selectAll(`rect`).data(data, d => d.code)
 
-    groups
+    const enteringRects = rects
+      .enter()
       .append("rect")
-      .attr("width", d => xScale(d.GDP[2017]))
-      .attr("height", (d, i) => yScale.bandwidth())
       .attr("class", `rect`)
       .attr("x", sidePadding)
-      .attr("y", (d, i) => getYValue(i))
       .attr("stroke", "coral")
       .attr("stroke-width", 1)
       .attr("opacity", 1)
       .attr("fill", "transparent")
+
+    const mergedLabelSelection = rects.merge(enteringRects)
+
+    mergedLabelSelection
+      .transition()
+      .duration(1000)
+      .attr("width", d => xScale(d.GDP[2017]))
+      .attr("height", (d, i) => yScale.bandwidth())
+      .attr("y", (d, i) => getYValue(i))
+
+    rects.exit().transition().remove()
   }
   function drawTitle(svg) {
     svg
@@ -54,19 +68,30 @@ const Barchart = ({ data, getXScale, getYScale, continent, level }) => {
   }
 
   function drawLables(svg) {
-    svg
-      .selectAll(`g`)
+    const labels = svg.selectAll(`.labels`).data(data, d => d.code)
+
+    const enteringLabels = labels
+      .enter()
       .append("text")
-      .text(d => d.name)
       .attr("x", svgWidth - sidePadding)
-      .attr("class", "labels")
       .attr("y", (d, i) => getYValue(i))
+      .attr("class", "labels")
       .style("font-size", "8")
       .style("letter-spacing", "0.1rem")
       .attr("text-anchor", "end")
       .attr("dominant-baseline", "hanging")
       .attr("fill", "black")
       .attr("font-family", "Major Mono")
+
+    const mergedLabelSelection = labels.merge(enteringLabels)
+
+    mergedLabelSelection
+      .transition()
+      .duration(1000)
+      .text(d => d.name)
+      .attr("y", (d, i) => getYValue(i))
+
+    labels.exit().transition().remove()
   }
   return <StyledSVG id={`svg-${level}`} />
 }
