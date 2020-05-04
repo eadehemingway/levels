@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import * as d3 from "d3"
 import styled from "styled-components"
 import "../index.css"
@@ -8,7 +8,12 @@ import { getSvgWidth } from "../pages/index"
 
 export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   if (isLevelView && data.length === 0) return null
-  const svgWidth = getSvgWidth()
+  const [svgWidth, setSvgWidth] = useState(0)
+
+  useEffect(() => {
+    const svgWidth = getSvgWidth()
+    setSvgWidth(svgWidth)
+  }, [])
   const xScale = getXScale(data)
   const topPadding = 70
   const transition = 500
