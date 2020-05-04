@@ -4,11 +4,11 @@ import styled from "styled-components"
 import "../index.css"
 
 import { colors } from "../colors"
-import { svgWidth } from "../pages/index"
+import { getSvgWidth } from "../pages/index"
 
 export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   if (isLevelView && data.length === 0) return null
-
+  const svgWidth = getSvgWidth()
   const xScale = getXScale(data)
   const topPadding = 70
   const transition = 500

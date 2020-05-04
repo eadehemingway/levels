@@ -2,11 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import "../index.css"
 
-import { svgWidth } from "../pages/index"
+import { getSvgWidth } from "../pages/index"
 import { colors } from "../colors"
 
 export const PageTitle = ({ title }) => {
-  const isDesktop = window.innerWidth > 1100
+  function getIsDesktop() {
+    return window.innerWidth > 1100
+  }
+  const isDesktop = getIsDesktop()
+  const svgWidth = getSvgWidth()
   if (isDesktop) {
     return (
       <TitleWrapper>
