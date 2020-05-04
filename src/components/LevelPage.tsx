@@ -1,6 +1,6 @@
 import React from "react"
 import "../index.css"
-import { Barchart } from "../components/barchart"
+import { Barchart } from "../components/Barchart"
 
 export const LevelPage = ({ continents, levelData, calculateXScale }) => {
   return (
