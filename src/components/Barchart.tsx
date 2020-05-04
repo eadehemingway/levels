@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import * as d3 from "d3"
 import styled from "styled-components"
 import "../index.css"
@@ -9,7 +9,7 @@ import { svgWidth } from "../pages/index"
 export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   if (isLevelView && data.length === 0) return null
 
-  const xScale = getXScale()
+  const xScale = getXScale(data)
   const topPadding = 70
   const transition = 500
   const rectHeight = 4
@@ -58,12 +58,10 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
       .attr("width", svgWidth)
       .attr("height", tooltipHeight)
       .attr("fill", "white")
-    // .attr("stroke", "lightslategrey")
-    // .attr("stroke-width", 1)
 
     const tooltipBarHeight = 10
     const yOffset = (tooltipHeight - tooltipBarHeight) / 2
-    const tooltipBar = tooltipGroup
+    tooltipGroup
       .append("rect")
       .attr("class", "tooltip-bar")
       .attr("width", 0)
@@ -73,17 +71,14 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
       .attr("stroke-width", 1)
       .attr("transform", `translate(0, ${yOffset})`)
 
-    const textBackground = tooltipGroup
+    tooltipGroup
       .append("rect")
       .attr("class", "text-background")
       .attr("width", 0)
       .attr("height", tooltipHeight)
       .attr("fill", "white")
-    // .attr("stroke", "black")
-    // .attr("stroke-width", 1)
-    // .attr("transform", `translate(${graphWidth}, ${yOffset})`)
 
-    const tooltipText = tooltipGroup
+    tooltipGroup
       .append("text")
       .attr("class", "tooltip-text")
       .attr("fill", colors.darkGrey)
@@ -279,7 +274,6 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
 const StyledSVG = styled.svg`
   overflow: visible;
   margin: 0 50px;
-  /* border: 2px solid lavender; */
   @media only screen and (max-width: 500px) {
     margin: 0;
   }

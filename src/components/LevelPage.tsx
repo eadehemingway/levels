@@ -1,19 +1,8 @@
 import React from "react"
-import styled from "styled-components"
 import "../index.css"
 import { Barchart } from "../components/barchart"
-import * as d3 from "d3"
-import { svgWidth } from "../pages/index"
 
-export const LevelPage = ({ continents, levelData }) => {
-  function calculateXScale() {
-    const levelDataVals = levelData.map(d => d.GDP[2017])
-    return d3
-      .scaleLinear()
-      .domain([0, d3.max(levelDataVals) * 3])
-      .range([0, svgWidth])
-  }
-
+export const LevelPage = ({ continents, levelData, calculateXScale }) => {
   return (
     <>
       {continents.map((c, i) => {

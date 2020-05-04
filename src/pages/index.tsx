@@ -1,6 +1,4 @@
 import React, { useState } from "react"
-import * as d3 from "d3"
-import { data } from "../data/data"
 import styled from "styled-components"
 import "../index.css"
 import Nav from "../components/Nav"

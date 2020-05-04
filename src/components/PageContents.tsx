@@ -1,11 +1,13 @@
-import React, { useState } from "react"
-import * as d3 from "d3"
+import React from "react"
 import { data } from "../data/data"
+import * as d3 from "d3"
+
 import styled from "styled-components"
 import "../index.css"
 import { LevelPage } from "../components/LevelPage"
 import { ContinentPage } from "../components/ContinentPage"
 import { PageTitle } from "./PageTitle"
+import { svgWidth } from "../pages"
 
 export const PageContents = ({
   activePage,
@@ -26,6 +28,14 @@ export const PageContents = ({
     }
   }
 
+  function calculateXScale(dataArr) {
+    const values = dataArr.map(d => d.GDP[2017])
+    return d3
+      .scaleLinear()
+      .domain([0, d3.max(values) * 3])
+      .range([0, svgWidth])
+  }
+
   const levelData = data.filter(d => getLevel(d.GDP[2017], activePage))
   const continentData = data.filter(d => d.continent === activePage)
 
@@ -34,12 +44,17 @@ export const PageContents = ({
       <PageTitle title={activePage} />
       <SvgWrapper>
         {levelOrContinent === "level" ? (
-          <LevelPage continents={continents} levelData={levelData} />
+          <LevelPage
+            continents={continents}
+            levelData={levelData}
+            calculateXScale={calculateXScale}
+          />
         ) : (
           <ContinentPage
             getLevel={getLevel}
             continentData={continentData}
             levels={levels}
+            calculateXScale={calculateXScale}
           />
         )}
       </SvgWrapper>
