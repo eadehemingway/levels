@@ -4,9 +4,15 @@ import styled from "styled-components"
 import "../index.css"
 
 import { colors } from "../colors"
-import { svgWidth } from "../pages"
 
-export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
+export const Barchart = ({
+  data,
+  getXScale,
+  category,
+  index,
+  isLevelView,
+  svgWidth,
+}) => {
   if (isLevelView && data.length === 0) return null
 
   const xScale = getXScale(data)

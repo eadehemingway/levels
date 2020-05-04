@@ -3,9 +3,8 @@ import styled from "styled-components"
 import "../index.css"
 
 import { colors } from "../colors"
-import { svgWidth } from "../pages"
 
-export const PageTitle = ({ title }) => {
+export const PageTitle = ({ title, svgWidth }) => {
   const [isDesktop, setIsDesktop] = useState(true)
 
   useEffect(() => {

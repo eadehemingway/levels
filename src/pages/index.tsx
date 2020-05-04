@@ -1,15 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import "../index.css"
 import Nav from "../components/Nav"
 import { Footer } from "../components/Footer"
 import { PageContents } from "../components/PageContents"
 
-export const svgWidth = 300
-
 const IndexPage = () => {
   const [activePage, setActivePage] = useState("Level One")
   const [levelOrContinent, setLevelOrContinent] = useState("level")
+  const [svgWidth, setSvgWidth] = useState(320)
+
+  useEffect(() => {
+    setSvgWidth(window.innerWidth > 500 ? 320 : 270)
+  }, [])
 
   const continents = [
     "Africa",
@@ -36,6 +39,7 @@ const IndexPage = () => {
           levelOrContinent={levelOrContinent}
           continents={continents}
           levels={levels}
+          svgWidth={svgWidth}
         />
         <Footer />
       </Column>

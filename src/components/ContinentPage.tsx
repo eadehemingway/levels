@@ -7,6 +7,7 @@ export const ContinentPage = ({
   levels,
   getLevel,
   calculateXScale,
+  svgWidth,
 }) => {
   return (
     <>
@@ -23,6 +24,7 @@ export const ContinentPage = ({
             category={level}
             index={i}
             key={i}
+            svgWidth={svgWidth}
           />
         )
       })}

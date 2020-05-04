@@ -7,13 +7,13 @@ import "../index.css"
 import { LevelPage } from "../components/LevelPage"
 import { ContinentPage } from "../components/ContinentPage"
 import { PageTitle } from "./PageTitle"
-import { svgWidth } from "../pages"
 
 export const PageContents = ({
   activePage,
   levelOrContinent,
   continents,
   levels,
+  svgWidth,
 }) => {
   function getLevel(val, level) {
     switch (level) {
@@ -41,13 +41,14 @@ export const PageContents = ({
 
   return (
     <Container>
-      <PageTitle title={activePage} />
+      <PageTitle title={activePage} svgWidth={svgWidth} />
       <SvgWrapper>
         {levelOrContinent === "level" ? (
           <LevelPage
             continents={continents}
             levelData={levelData}
             calculateXScale={calculateXScale}
+            svgWidth={svgWidth}
           />
         ) : (
           <ContinentPage
@@ -55,6 +56,7 @@ export const PageContents = ({
             continentData={continentData}
             levels={levels}
             calculateXScale={calculateXScale}
+            svgWidth={svgWidth}
           />
         )}
       </SvgWrapper>

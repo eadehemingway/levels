@@ -2,7 +2,12 @@ import React from "react"
 import "../index.css"
 import { Barchart } from "../components/Barchart"
 
-export const LevelPage = ({ continents, levelData, calculateXScale }) => {
+export const LevelPage = ({
+  continents,
+  levelData,
+  calculateXScale,
+  svgWidth,
+}) => {
   return (
     <>
       {continents.map((c, i) => {
@@ -18,6 +23,7 @@ export const LevelPage = ({ continents, levelData, calculateXScale }) => {
             category={c}
             index={i}
             key={i}
+            svgWidth={svgWidth}
           />
         )
       })}
