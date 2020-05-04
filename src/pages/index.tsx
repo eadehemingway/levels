@@ -7,6 +7,7 @@ import Nav from "../components/Nav"
 import { LevelPage } from "../components/LevelPage"
 import { ContinentPage } from "../components/ContinentPage"
 import { colors } from "../colors"
+import { Footer } from "../components/Footer"
 
 export const svgWidth = window.innerWidth < 500 ? 270 : 420
 
@@ -49,26 +50,33 @@ const IndexPage = () => {
         setLevelOrContinent={setLevelOrContinent}
         levels={levels}
       />
-      <PageContents>
-        {levelOrContinent === "level" ? (
-          <LevelPage
-            continents={continents}
-            levelData={levelData}
-            activePage={activePage}
-          />
-        ) : (
-          <ContinentPage
-            getLevel={getLevel}
-            continentData={continentData}
-            levels={levels}
-            activePage={activePage}
-          />
-        )}
-      </PageContents>
+      <Column>
+        <PageContents>
+          {levelOrContinent === "level" ? (
+            <LevelPage
+              continents={continents}
+              levelData={levelData}
+              activePage={activePage}
+            />
+          ) : (
+            <ContinentPage
+              getLevel={getLevel}
+              continentData={continentData}
+              levels={levels}
+              activePage={activePage}
+            />
+          )}
+        </PageContents>
+        <Footer />
+      </Column>
     </Container>
   )
 }
 
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -79,6 +87,10 @@ const PageContents = styled.div`
   display: flex;
   height: fit-content;
   overflow: scroll;
+  @media only screen and (max-width: 500px) {
+    padding-left: 70px;
+    padding-right: 30px;
+
 `
 
 export const Title = styled.h1`

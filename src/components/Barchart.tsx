@@ -256,7 +256,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
         .on("mouseover", d => {
           tooltipGroup
             .attr("visibility", "visible")
-            .attr("transform", `translate(${60},${-10})`)
+            .attr("transform", `translate(${0},${-10})`)
         })
         .on("mouseout", () => tooltipGroup.attr("visibility", "hidden"))
     }
@@ -268,9 +268,9 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
       case "Level Two":
         return ["gdp ppp is greater than $2800", " but less than $8000"]
       case "Level Three":
-        return ["gdp ppp is greater than $8000,", "but less than $25000"]
+        return ["gdp ppp is greater than $8000,", "but less than $25,000"]
       case "Level Four":
-        return ["gdp ppp is greater than $25000"]
+        return ["gdp ppp is greater than $25,000"]
     }
   }
   return <StyledSVG id={`svg-${index}`} />

@@ -56,17 +56,21 @@ export default function Nav({
 
 const Container = styled.div`
   width: 100px;
-  height: 100vh;
-  top: 0;
+  min-height: 100vh;
   border: 1px solid coral;
+  background: white;
   position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
   @media only screen and (max-width: 768px) {
     width: 50px;
   }
 `
 const StickyWrapper = styled.div`
   width: 100px;
-  min-height: 100vh;
+  height: 100vh;
   position: sticky;
   top: 0;
   display: flex;
