@@ -29,11 +29,11 @@ const TitleWrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
-  @media only screen and (max-width: 1100px) {
-  }
+
   @media only screen and (max-width: 500px) {
     justify-content: center;
-    width: fit-content;
+
+    width: 100%;
   }
 `
 

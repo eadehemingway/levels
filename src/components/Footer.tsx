@@ -18,7 +18,7 @@ export const P = styled.p`
   text-align: right;
   @media only screen and (max-width: 500px) {
     padding: 5px 30px;
-    width: calc(100vw - 60px);
+    width: calc(100vw - 50px);
   }
 `
 const Container = styled.div`
@@ -26,12 +26,12 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-end;
   background: white;
-  padding-left: 60px;
+  padding-left: 50px;
   position: fixed;
   bottom: 0;
   width: calc(100vw - 100px);
   right: 0;
   @media only screen and (max-width: 500px) {
-    max-width: calc(100vw - 60px);
+    max-width: calc(100vw - 50px);
   }
 `

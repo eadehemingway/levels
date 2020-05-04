@@ -77,7 +77,7 @@ const StickyWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   @media only screen and (max-width: 768px) {
-    width: 60px;
+    width: 50px;
   }
 `
 const Tab = styled.p`
@@ -100,8 +100,8 @@ const Tab = styled.p`
   @media only screen and (max-width: 768px) {
     padding: 3px;
     font-size: 14px;
-    margin: 6px 3px;
-    width: 36px;
+    margin: 6px auto;
+    max-width: 36px;
   }
 `
 
