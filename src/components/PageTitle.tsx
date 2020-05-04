@@ -30,7 +30,6 @@ const TitleWrapper = styled.div`
   width: 100%;
   justify-content: space-around;
   @media only screen and (max-width: 1100px) {
-    padding-left: 70px;
   }
   @media only screen and (max-width: 500px) {
     justify-content: center;

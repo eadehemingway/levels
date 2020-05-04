@@ -25,8 +25,12 @@ const Container = styled.div`
   border-top: 1px solid #e8e8e8;
   display: flex;
   justify-content: flex-end;
+  background: white;
   padding-left: 60px;
-
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 100px);
+  right: 0;
   @media only screen and (max-width: 500px) {
     max-width: calc(100vw - 60px);
   }
