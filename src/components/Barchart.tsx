@@ -61,7 +61,7 @@ export const Barchart = ({
 
     tooltipGroup
       .append("rect")
-      .attr("width", svgWidth)
+      .attr("width", svgWidth + 5)
       .attr("height", tooltipHeight)
       .attr("fill", "white")
 
