@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { data } from "../data/data"
 import * as d3 from "d3"
 
@@ -7,7 +7,7 @@ import "../index.css"
 import { LevelPage } from "../components/LevelPage"
 import { ContinentPage } from "../components/ContinentPage"
 import { PageTitle } from "./PageTitle"
-import { svgWidth } from "../pages"
+import { getSvgWidth } from "../pages"
 
 export const PageContents = ({
   activePage,
@@ -15,6 +15,12 @@ export const PageContents = ({
   continents,
   levels,
 }) => {
+  const [svgWidth, setSvgWidth] = useState(0)
+
+  useEffect(() => {
+    const svgWidth = getSvgWidth()
+    setSvgWidth(svgWidth)
+  }, [])
   function getLevel(val, level) {
     switch (level) {
       case "Level One":
