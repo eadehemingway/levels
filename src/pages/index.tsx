@@ -79,7 +79,7 @@ const Column = styled.div`
 `
 const Container = styled.div`
   display: flex;
-  width: 100%;
+  max-width: 100%;
   position: relative;
 `
 const PageContents = styled.div`
@@ -87,20 +87,10 @@ const PageContents = styled.div`
   display: flex;
   height: fit-content;
   overflow: scroll;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 1100px) {
     padding-left: 70px;
     padding-right: 30px;
-
-`
-
-export const Title = styled.h1`
-  color: ${colors.midGrey};
-  font-family: Major Mono;
-  font-size: 28px;
-  margin-bottom: 26px;
-  border-bottom: 1px solid coral;
-  width: fit-content;
-  padding-bottom: 17px;
+  }
 `
 
 export default IndexPage

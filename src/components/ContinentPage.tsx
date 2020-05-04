@@ -3,8 +3,6 @@ import styled from "styled-components"
 import "../index.css"
 import { Barchart } from "../components/barchart"
 import * as d3 from "d3"
-import { colors } from "../colors"
-import { Title } from "../pages/levels"
 import { PageTitle } from "./PageTitle"
 
 export const svgWidth = 420

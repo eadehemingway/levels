@@ -278,5 +278,9 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
 
 const StyledSVG = styled.svg`
   overflow: visible;
+  margin: 0 50px;
   /* border: 2px solid lavender; */
+  @media only screen and (max-width: 500px) {
+    margin: 0;
+  }
 `
