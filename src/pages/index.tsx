@@ -5,9 +5,7 @@ import Nav from "../components/Nav"
 import { Footer } from "../components/Footer"
 import { PageContents } from "../components/PageContents"
 
-export function getSvgWidth() {
-  return window.innerWidth < 500 ? 270 : 320
-}
+export const svgWidth = 300
 
 const IndexPage = () => {
   const [activePage, setActivePage] = useState("Level One")

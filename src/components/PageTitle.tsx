@@ -2,17 +2,14 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import "../index.css"
 
-import { getSvgWidth } from "../pages/index"
 import { colors } from "../colors"
+import { svgWidth } from "../pages"
 
 export const PageTitle = ({ title }) => {
   const [isDesktop, setIsDesktop] = useState(true)
-  const [svgWidth, setSvgWidth] = useState(0)
 
   useEffect(() => {
     setIsDesktop(window.innerWidth > 1100)
-    const svgWidth = getSvgWidth()
-    setSvgWidth(svgWidth)
   }, [])
 
   if (isDesktop) {

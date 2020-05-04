@@ -4,16 +4,11 @@ import styled from "styled-components"
 import "../index.css"
 
 import { colors } from "../colors"
-import { getSvgWidth } from "../pages/index"
+import { svgWidth } from "../pages"
 
 export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   if (isLevelView && data.length === 0) return null
-  const [svgWidth, setSvgWidth] = useState(0)
 
-  useEffect(() => {
-    const svgWidth = getSvgWidth()
-    setSvgWidth(svgWidth)
-  }, [])
   const xScale = getXScale(data)
   const topPadding = 70
   const transition = 500
@@ -166,7 +161,6 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
   function drawLabels(svg, groups, enteringGroups) {
     const enteringLabels = enteringGroups
       .append("text")
-      .attr("x", svgWidth)
       .attr("y", (d, i) => getYValue(i))
       .attr("class", "labels")
       .style("font-size", "10")
@@ -175,9 +169,12 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
       .attr("dominant-baseline", "hanging")
       .attr("fill", colors.darkGrey)
       .attr("font-family", "Major Mono")
+      .attr("x", svgWidth)
 
     const labels = svg.selectAll(".labels")
     const allLabels = labels.merge(enteringLabels)
+
+    labels.attr("x", svgWidth)
 
     allLabels
       .transition()
@@ -273,6 +270,7 @@ export const Barchart = ({ data, getXScale, category, index, isLevelView }) => {
         return ["gdp ppp is greater than $25,000"]
     }
   }
+
   return <StyledSVG id={`svg-${index}`} />
 }
 
