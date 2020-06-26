@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { data } from "../data/data"
 import * as d3 from "d3"
-
 import styled from "styled-components"
 import "../index.css"
 import { LevelPage } from "../components/LevelPage"
@@ -72,6 +71,7 @@ const SvgWrapper = styled.div`
   grid-column-gap: 30px;
   justify-content: space-around;
   grid-template-rows: auto;
+
   @media only screen and (max-width: 769px) {
     margin: auto;
     grid-template-columns: ${mobileSvgWidth}px ${mobileSvgWidth}px;
