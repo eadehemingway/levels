@@ -32,7 +32,7 @@ export const Barchart = ({
   function drawGraph() {
     const svg = d3
       .select(`#svg-${index}`)
-      .attr("width", "auto")
+      .attr("width", svgWidth)
       .attr("height", getSvgHeight())
 
     const groups = svg.selectAll(`.rect-group`).data(data, d => d.code)
@@ -282,7 +282,6 @@ export const Barchart = ({
 
 const StyledSVG = styled.svg`
   overflow: visible;
-  margin: 30px 50px;
   @media only screen and (max-width: 500px) {
     margin: 0;
   }

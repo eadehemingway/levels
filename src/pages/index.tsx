@@ -4,14 +4,15 @@ import "../index.css"
 import Nav from "../components/Nav"
 import { Footer } from "../components/Footer"
 import { PageContents } from "../components/PageContents"
+import { desktopSvgWidth, mobileSvgWidth } from "../components/sharedVariables"
 
 const IndexPage = () => {
   const [activePage, setActivePage] = useState("Level One")
   const [levelOrContinent, setLevelOrContinent] = useState("level")
-  const [svgWidth, setSvgWidth] = useState(320)
+  const [svgWidth, setSvgWidth] = useState(desktopSvgWidth)
 
   useEffect(() => {
-    setSvgWidth(window.innerWidth > 500 ? 320 : 240)
+    setSvgWidth(window.innerWidth > 800 ? desktopSvgWidth : mobileSvgWidth)
   }, [])
 
   const continents = [

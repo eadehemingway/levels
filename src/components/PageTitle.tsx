@@ -16,7 +16,7 @@ export const Title = styled.h1`
   width: fit-content;
   padding-bottom: 17px;
   margin-bottom: 0;
-  margin-left: 50px;
+  margin-left: 20px;
   margin-top: 40px;
   @media only screen and (max-width: 500px) {
     margin-left: 0;
