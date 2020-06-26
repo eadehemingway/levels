@@ -4,42 +4,9 @@ import "../index.css"
 
 import { colors } from "../colors"
 
-export const PageTitle = ({ title, svgWidth }) => {
-  const [isDesktop, setIsDesktop] = useState(true)
-
-  useEffect(() => {
-    setIsDesktop(window.innerWidth > 1100)
-  }, [])
-
-  if (isDesktop) {
-    return (
-      <TitleWrapper>
-        <div style={{ width: svgWidth }}>
-          <Title>{title}</Title>
-        </div>
-        <div style={{ width: svgWidth }}></div>
-      </TitleWrapper>
-    )
-  }
-  return (
-    <TitleWrapper>
-      <Title>{title}</Title>
-    </TitleWrapper>
-  )
+export const PageTitle = ({ title }) => {
+  return <Title>{title}</Title>
 }
-
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-around;
-
-  @media only screen and (max-width: 500px) {
-    justify-content: center;
-
-    width: 100%;
-  }
-`
 
 export const Title = styled.h1`
   color: ${colors.midGrey};
@@ -48,9 +15,12 @@ export const Title = styled.h1`
   border-bottom: 1px solid coral;
   width: fit-content;
   padding-bottom: 17px;
-  margin-bottom: 26px;
-  @media only screen and (max-width: 1100px) {
-  }
+  margin-bottom: 0;
+  margin-left: 50px;
+  margin-top: 40px;
   @media only screen and (max-width: 500px) {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 5px;
   }
 `

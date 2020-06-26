@@ -32,7 +32,7 @@ export const Barchart = ({
   function drawGraph() {
     const svg = d3
       .select(`#svg-${index}`)
-      .attr("width", svgWidth)
+      .attr("width", "auto")
       .attr("height", getSvgHeight())
 
     const groups = svg.selectAll(`.rect-group`).data(data, d => d.code)

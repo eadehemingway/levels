@@ -41,7 +41,7 @@ export const PageContents = ({
 
   return (
     <Container>
-      <PageTitle title={activePage} svgWidth={svgWidth} />
+      <PageTitle title={activePage} />
       <SvgWrapper>
         {levelOrContinent === "level" ? (
           <LevelPage
@@ -65,20 +65,23 @@ export const PageContents = ({
 }
 
 const SvgWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-around;
+  display: grid;
+  width: calc(100vw - 200px);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-template-rows: auto;
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media only screen and (max-width: 320px) {
+    grid-template-columns: 1fr;
+  }
 `
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-  padding-left: 140px;
-  padding-right: 40px;
+  padding-left: 150px;
   @media only screen and (max-width: 1100px) {
     padding: 0;
-    padding-left: 50px;
+    padding-left: 63px;
     padding-top: 20px;
   }
 `

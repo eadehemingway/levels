@@ -11,7 +11,7 @@ const IndexPage = () => {
   const [svgWidth, setSvgWidth] = useState(320)
 
   useEffect(() => {
-    setSvgWidth(window.innerWidth > 500 ? 320 : 270)
+    setSvgWidth(window.innerWidth > 500 ? 320 : 240)
   }, [])
 
   const continents = [
@@ -33,27 +33,20 @@ const IndexPage = () => {
         setLevelOrContinent={setLevelOrContinent}
         levels={levels}
       />
-      <Column>
-        <PageContents
-          activePage={activePage}
-          levelOrContinent={levelOrContinent}
-          continents={continents}
-          levels={levels}
-          svgWidth={svgWidth}
-        />
-        <Footer />
-      </Column>
+
+      <PageContents
+        activePage={activePage}
+        levelOrContinent={levelOrContinent}
+        continents={continents}
+        levels={levels}
+        svgWidth={svgWidth}
+      />
+      <Footer />
     </Container>
   )
 }
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 const Container = styled.div`
-  display: flex;
-  max-width: 100%;
   position: relative;
 `
 

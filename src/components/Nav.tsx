@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { colors } from "../colors"
+import { navWidth } from "./sharedVariables"
 
 export default function Nav({
   setActivePage,
@@ -55,7 +56,7 @@ export default function Nav({
 }
 
 const Container = styled.div`
-  width: 100px;
+  width: ${navWidth};
   min-height: 100vh;
   border: 1px solid coral;
   background: white;
