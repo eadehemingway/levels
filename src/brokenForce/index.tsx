@@ -5,7 +5,7 @@ import { data } from "../data/data"
 import styled from "styled-components"
 import "../index.css"
 
-const IndexPage = () => {
+export const Force = () => {
   const [year, setYear] = useState(1990)
 
   const radius = 6
@@ -186,4 +186,4 @@ const PlayHandle = styled.div`
 
   top: -6px;
 `
-export default IndexPage
+

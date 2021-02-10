@@ -2,7 +2,7 @@ import React from "react"
 import * as d3 from "d3"
 import styled from "styled-components"
 
-class Force extends React.Component {
+export class ForceOne extends React.Component {
   svgWidth = 1000
   svgHeight = 500
   state = {
@@ -48,6 +48,8 @@ class Force extends React.Component {
       .enter()
       .append("circle")
       .attr("r", 10)
+      // .attr('cy', 400)
+      // .attr('cx', d=> d.xVal[value])
       .attr("class", "bubble")
       .attr("fill", "white")
       .attr("stroke", "coral")
@@ -58,12 +60,6 @@ class Force extends React.Component {
       this.setState({ value: value + 1 })
     }, 1000)
 
-    setTimeout(() => {
-      this.setState({ value: value + 1 })
-    }, 1001)
-    setTimeout(() => {
-      this.setState({ value: value + 1 })
-    }, 1002)
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     this.createSimulation()
@@ -122,4 +118,4 @@ const StyledSelect = styled.select`
   margin: 70px;
 `
 
-export default Force
+
