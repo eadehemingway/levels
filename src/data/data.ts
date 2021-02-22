@@ -1,3 +1,4 @@
+// make sure every instance has 1990 to 2017, set the ones that don't exist now to 0
 export const data = [
   {
     name: "Afghanistan",

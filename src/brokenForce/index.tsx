@@ -14,7 +14,7 @@ export const Force = () => {
     if (year >= 2017) return
     let id = setTimeout(() => {
       setYear(year + 1)
-    }, 1300)
+    }, 1500)
     return () => clearTimeout(id)
   }) //update year
 
@@ -32,24 +32,21 @@ export const Force = () => {
     const forceX = d3
       .forceX()
       .x(d => findCenterOfGravity(d).x)
-      .strength(1)
+      .strength(.5)
 
     const forceY = d3
       .forceY()
       .y(d => findCenterOfGravity(d).y)
-      .strength(1)
+      .strength(.5)
 
-    const collision = d3.forceCollide(radius * 1.5).strength(0.6)
+    const collision = d3.forceCollide(radius * 1.7).strength(0.6)
 
     d3.forceSimulation(data, d => d.code)
       .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
-      .alpha(0.3) // small alpha to have the elements move at a slower pace
-      // .alphaDecay(0)
+      .alpha(0.3)
       .on("tick", () => {
-        // console.log("tickin")
-        // call the tick function running the simulation
         d3.selectAll(`.circle`)
           .attr("cy", d => d.y)
           .attr("cx", d => d.x)
@@ -112,19 +109,20 @@ export const Force = () => {
     const svg = d3.select("svg")
     const circles = svg.selectAll(`.circle`).data(data, d => d.code)
     circles
-      .enter()
-      .append("circle")
+      .join(
+        enter => enter.append("circle")
+            .attr("stroke", "coral"),
+        update => update
+            .attr("stroke", "green"),
+        exit => exit
+            .attr("stroke", "gray")
+       )
       .attr("class", `circle`)
-      .attr("stroke", "coral")
       .attr("stroke-width", 2)
-      .transition().duration(300)
+      .transition().duration(500)
       .attr("r", d=>getRadius(d))
       .attr("opacity", d=>getOpacity(d))
       .attr("fill", "white")
-  }
-
-  function updateCircles(){
-
   }
 
   function drawLabels() {
