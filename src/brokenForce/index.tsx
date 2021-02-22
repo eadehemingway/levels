@@ -8,25 +8,25 @@ import "../index.css"
 export const Force = () => {
   const [year, setYear] = useState(1990)
 
-  const radius = 6
+  const radius = 6;
 
   useEffect(() => {
     if (year >= 2017) return
     let id = setTimeout(() => {
       setYear(year + 1)
-    }, 700)
+    }, 1300)
     return () => clearTimeout(id)
-  })
+  }) //update year
 
   useEffect(() => {
     createSimulation()
     drawLabels()
     drawCircles()
-  }, [])
+  }, []) //call functions when first load?
 
   useEffect(() => {
     createSimulation()
-  }, [year])
+  }, [year]) // call functions everytime year updates?
 
   function createSimulation() {
     const forceX = d3
@@ -39,24 +39,36 @@ export const Force = () => {
       .y(d => findCenterOfGravity(d).y)
       .strength(1)
 
-    const collision = d3.forceCollide(radius * 2).strength(0.2)
+    const collision = d3.forceCollide(radius * 1.5).strength(0.6)
 
     d3.forceSimulation(data, d => d.code)
       .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
-      .alpha(0.04) // small alpha to have the elements move at a slower pace
-      .alphaDecay(0)
+      .alpha(0.3) // small alpha to have the elements move at a slower pace
+      // .alphaDecay(0)
       .on("tick", () => {
         // console.log("tickin")
         // call the tick function running the simulation
         d3.selectAll(`.circle`)
           .attr("cy", d => d.y)
-          .attr("cx", d => {
-            return d.x
-          })
+          .attr("cx", d => d.x)
       })
   }
+
+  function getOpacity(data) {
+    const level = findLevel(data.GDP[year])
+    if (!level) return 0
+    return 1
+  }
+
+  function getRadius(data) {
+    const level = findLevel(data.GDP[year])
+    if (!level) return 0
+    return 6
+  }
+
+
   function findCenterOfGravity(data) {
     const level = findLevel(data.GDP[year])
 
@@ -79,7 +91,7 @@ export const Force = () => {
       },
     }
 
-    if (!level) return { x: 0, y: -100 }
+    if (!level) return { x: 500, y: 300 }
     return centersOfGravity[level]
   }
 
@@ -102,12 +114,17 @@ export const Force = () => {
     circles
       .enter()
       .append("circle")
-      .attr("r", radius)
       .attr("class", `circle`)
       .attr("stroke", "coral")
       .attr("stroke-width", 2)
-      .attr("opacity", 1)
+      .transition().duration(300)
+      .attr("r", d=>getRadius(d))
+      .attr("opacity", d=>getOpacity(d))
       .attr("fill", "white")
+  }
+
+  function updateCircles(){
+
   }
 
   function drawLabels() {
@@ -186,4 +203,3 @@ const PlayHandle = styled.div`
 
   top: -6px;
 `
-

@@ -8,24 +8,20 @@ export class ForceOne extends React.Component {
   state = {
     data: [
       {
-        name: "a",
-        code: "one",
-        xVal: {
-          1: 200,
-          2: 800,
-        },
+        x: 200,
+        y:300
       },
-    ],
-    value: 1,
+    ]
   }
 
+
   componentDidMount() {
-    const { data, value } = this.state
-    const svg = d3
+    const { data } = this.state
+    this.svg = d3
       .select("svg")
       .attr("width", this.svgWidth)
       .attr("height", this.svgHeight)
-    svg
+    this.svg
       .append("line")
       .attr("x1", 800)
       .attr("x2", 800)
@@ -33,7 +29,7 @@ export class ForceOne extends React.Component {
       .attr("y2", 800)
       .attr("stroke", "black")
       .attr("stroke-width", 2)
-    svg
+    this.svg
       .append("line")
       .attr("x1", 200)
       .attr("x2", 200)
@@ -42,7 +38,7 @@ export class ForceOne extends React.Component {
       .attr("stroke", "black")
       .attr("stroke-width", 2)
 
-    svg
+    this.svg
       .selectAll("circle")
       .data(data)
       .enter()
@@ -57,7 +53,11 @@ export class ForceOne extends React.Component {
     this.createSimulation()
 
     setTimeout(() => {
-      this.setState({ value: value + 1 })
+      this.setState({ data: [{
+          x: 800,
+          y:300
+        }]
+    })
     }, 1000)
 
   }
@@ -66,38 +66,44 @@ export class ForceOne extends React.Component {
   }
 
   // this takes a data point and works out which category it should be in
-  centerOfGravityForDatum = d => {
-    const { value } = this.state
-    return d.xVal[value]
-  }
-
   createSimulation = () => {
     const { data } = this.state
 
+    this.svg
+      .selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("r", 10)
+      .attr("class", "bubble")
+      .attr("fill", "white")
+      .attr("stroke", "coral")
+
     const forceX = d3
       .forceX()
-      .x(d => this.centerOfGravityForDatum(d))
+      .x(d => d.x)
       .strength(1)
 
     const forceY = d3
       .forceY()
-      .y(d => 300)
+      .y(d => d.y)
       .strength(1)
 
     const sim = d3
       .forceSimulation(data)
-      .force("collision", d3.forceCollide().radius(12))
+      // .force("collide", d3.forceCollide().radius(12))
       .force("x", forceX)
       .force("y", forceY)
       .alpha(0.1) // small alpha to have the elements move at a slower pace
-      .on("tick", () => {
-        // call the tick function running the simulation
-        d3.selectAll(".bubble").attr(
-          "transform",
-          d => `translate(${d.x} ${d.y})`
-        )
-      })
-    // sim.alpha(1).restart()
+
+      sim.on('tick',tick);
+
+      function tick(){
+        d3.selectAll(".bubble")
+          .attr("transform", d => `translate(${d.x} ${d.y})`);
+      }
+
+    sim.restart();
   }
 
   render() {
@@ -117,5 +123,3 @@ const StyledSelect = styled.select`
   font-size: 20px;
   margin: 70px;
 `
-
-
