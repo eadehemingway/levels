@@ -32,20 +32,20 @@ export const Force = () => {
     const forceX = d3
       .forceX()
       .x(d => findCenterOfGravity(d).x)
-      .strength(.5)
+      .strength(.1)
 
     const forceY = d3
       .forceY()
       .y(d => findCenterOfGravity(d).y)
-      .strength(.5)
+      .strength(.1)
 
-    const collision = d3.forceCollide(radius * 1.7).strength(0.6)
+    const collision = d3.forceCollide(radius * 1.5).strength(1)
 
     d3.forceSimulation(data, d => d.code)
       .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
-      .alpha(0.3)
+      .alphaDecay(.03)
       .on("tick", () => {
         d3.selectAll(`.circle`)
           .attr("cy", d => d.y)
@@ -64,6 +64,9 @@ export const Force = () => {
     if (!level) return 0
     return 6
   }
+
+  // if level doesn't exist, EXIT
+  // filter data at each year based on level?
 
 
   function findCenterOfGravity(data) {
