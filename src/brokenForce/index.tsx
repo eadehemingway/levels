@@ -7,6 +7,7 @@ import "../index.css"
 
 export const Force = () => {
   const [year, setYear] = useState(1990)
+  const [levelsData, setLevelsData] = useState(data)
 
   const radius = 6;
 
@@ -19,12 +20,15 @@ export const Force = () => {
   }) //update year
 
   useEffect(() => {
+    filterData(levelsData)
     createSimulation()
     drawLabels()
     drawCircles()
   }, []) //call functions when first load?
 
   useEffect(() => {
+    filterData(levelsData)
+    console.log(levelsData)
     createSimulation()
   }, [year]) // call functions everytime year updates?
 
@@ -41,7 +45,7 @@ export const Force = () => {
 
     const collision = d3.forceCollide(radius * 1.5).strength(1)
 
-    d3.forceSimulation(data, d => d.code)
+    d3.forceSimulation(levelsData, d => d.code)
       .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
@@ -67,6 +71,13 @@ export const Force = () => {
 
   // if level doesn't exist, EXIT
   // filter data at each year based on level?
+
+  function filterData(data){
+    data = data.filter(function(d){
+      return !!d.GDP[year]
+    })
+    setLevelsData(data)
+  }
 
 
   function findCenterOfGravity(data) {
@@ -110,7 +121,7 @@ export const Force = () => {
 
   function drawCircles() {
     const svg = d3.select("svg")
-    const circles = svg.selectAll(`.circle`).data(data, d => d.code)
+    const circles = svg.selectAll(`.circle`).data(levelsData, d => d.code)
     circles
       .join(
         enter => enter.append("circle")
