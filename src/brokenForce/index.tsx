@@ -7,56 +7,79 @@ import "../index.css"
 
 export const Force = () => {
   const [year, setYear] = useState(1990)
+  const [levelsData, setLevelsData] = useState(data)
 
-  const radius = 6
+  const radius = 6;
 
   useEffect(() => {
     if (year >= 2017) return
     let id = setTimeout(() => {
       setYear(year + 1)
-    }, 700)
+    }, 1500)
     return () => clearTimeout(id)
-  })
+  }) //update year
 
   useEffect(() => {
+    filterData(levelsData)
     createSimulation()
     drawLabels()
     drawCircles()
-  }, [])
+  }, []) //call functions when first load?
 
   useEffect(() => {
+    filterData(levelsData)
+    console.log(levelsData)
     createSimulation()
-  }, [year])
+  }, [year]) // call functions everytime year updates?
 
   function createSimulation() {
     const forceX = d3
       .forceX()
       .x(d => findCenterOfGravity(d).x)
-      .strength(1)
+      .strength(.1)
 
     const forceY = d3
       .forceY()
       .y(d => findCenterOfGravity(d).y)
-      .strength(1)
+      .strength(.1)
 
-    const collision = d3.forceCollide(radius * 2).strength(0.2)
+    const collision = d3.forceCollide(radius * 1.5).strength(1)
 
-    d3.forceSimulation(data, d => d.code)
+    d3.forceSimulation(levelsData, d => d.code)
       .force("collision", collision)
       .force("x", forceX)
       .force("y", forceY)
-      .alpha(0.04) // small alpha to have the elements move at a slower pace
-      .alphaDecay(0)
+      .alphaDecay(.03)
       .on("tick", () => {
-        // console.log("tickin")
-        // call the tick function running the simulation
         d3.selectAll(`.circle`)
           .attr("cy", d => d.y)
-          .attr("cx", d => {
-            return d.x
-          })
+          .attr("cx", d => d.x)
       })
   }
+
+  function getOpacity(data) {
+    const level = findLevel(data.GDP[year])
+    if (!level) return 0
+    return 1
+  }
+
+  function getRadius(data) {
+    const level = findLevel(data.GDP[year])
+    if (!level) return 0
+    return 6
+  }
+
+  // if level doesn't exist, EXIT
+  // filter data at each year based on level?
+
+  function filterData(data){
+    data = data.filter(function(d){
+      return !!d.GDP[year]
+    })
+    setLevelsData(data)
+  }
+
+
   function findCenterOfGravity(data) {
     const level = findLevel(data.GDP[year])
 
@@ -79,7 +102,7 @@ export const Force = () => {
       },
     }
 
-    if (!level) return { x: 0, y: -100 }
+    if (!level) return { x: 500, y: 300 }
     return centersOfGravity[level]
   }
 
@@ -98,15 +121,21 @@ export const Force = () => {
 
   function drawCircles() {
     const svg = d3.select("svg")
-    const circles = svg.selectAll(`.circle`).data(data, d => d.code)
+    const circles = svg.selectAll(`.circle`).data(levelsData, d => d.code)
     circles
-      .enter()
-      .append("circle")
-      .attr("r", radius)
+      .join(
+        enter => enter.append("circle")
+            .attr("stroke", "coral"),
+        update => update
+            .attr("stroke", "green"),
+        exit => exit
+            .attr("stroke", "gray")
+       )
       .attr("class", `circle`)
-      .attr("stroke", "coral")
       .attr("stroke-width", 2)
-      .attr("opacity", 1)
+      .transition().duration(500)
+      .attr("r", d=>getRadius(d))
+      .attr("opacity", d=>getOpacity(d))
       .attr("fill", "white")
   }
 
@@ -186,4 +215,3 @@ const PlayHandle = styled.div`
 
   top: -6px;
 `
-

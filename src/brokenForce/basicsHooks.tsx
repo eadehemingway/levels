@@ -96,14 +96,15 @@ const Force = () => {
     const sim = d3
       .forceSimulation(data)
       .force(
-        "collision",
-        d3.forceCollide().radius(d => d.value * 2)
+        "collide",
+        d3.forceCollide().radius(d => d.value * 2).strength(0.9)
       )
       .force("x", forceX)
       .force("y", forceY)
-      .alpha(0.1) // small alpha to have the elements move at a slower pace
+      .alpha(1) // small alpha to have the elements move at a slower pace
       .on("tick", () => {
         // call the tick function running the simulation
+        //d3.selectAll(".bubble").attr("cx",d=>d.x).attr("cy",d=>d.y);
         d3.selectAll(".bubble").attr(
           "transform",
           d => `translate(${d.x} ${d.y})`
